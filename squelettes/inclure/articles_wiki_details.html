@@ -1,0 +1,18 @@
+<li class="item hentry">
+	<h4 class="h3 entry-title">
+	<a href="#URL_ARTICLE" rel="bookmark">#TITRE [&#91;(#AFFICHER_LANG)&#93;] </a>
+	 <BOUCLE_pays(GEO_PAYS){id_pays}>[#NOM]</BOUCLE_pays>
+	<BOUCLE_art_lies(ARTICLES_LIES){id_article_lie=#ID_TRAD}{si #ID_TRAD|!={0}|oui}>
+		[<span class="type">[(#TYPE_LIAISON|_T)]]
+	</BOUCLE_art_lies>	
+		<BOUCLE_art_lies_alter(ARTICLES_LIES){id_article_lie=#ID_ARTICLE}>
+			[<span class="type">[(#TYPE_LIAISON|_T)]</span>]
+		</BOUCLE_art_lies_alter>		
+	<//B_art_lies>
+	
+	[(#ENV{time_difference}|<{90}|oui)<small> <:new:></small>] 
+	</h4>
+	<BOUCLE_notations(ARTICLES){id_article}>#FORMULAIRE_NOTATION</BOUCLE_notations>
+	
+	[(#ENV{lang_sel}|non)<INCLURE{fond=inclure/wiki_trads,id_article,id_trad,env}/>]
+</li>	

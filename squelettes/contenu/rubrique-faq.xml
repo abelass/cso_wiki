@@ -1,0 +1,5 @@
+<composition>
+        <nom>Rubrique FAQ</nom>
+
+        <description>Affiche les articles de la rubrique comme FAQ : Titre=Question- Texte= Réponse</description>
+</composition>
