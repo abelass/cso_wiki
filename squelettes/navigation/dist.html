@@ -1,0 +1,94 @@
+
+
+[(#REM)Lien retour vers la page d'origine, si article traduit on prend le lien de l'origine de traduction]
+
+#SET{id_trad,#ARRAY{0,0}}
+[(#ENV{id_trad}|=={0}?{
+	#SET{id_article,#ENV{id_article}},
+	#SET{id_article,#ENV{id_trad}}
+	})]
+
+<B_art_lie>
+<div class="linked_article">
+<BOUCLE_art_lie(articles_lies){id_article_lie=#GET{id_article}}>
+	<BOUCLE_art_base(ARTICLES){id_article=#ID_ARTICLE}>
+		<BOUCLE_trad_lang(ARTICLES){id_trad}{lang} {id_trad !IN #GET{id_trad}}{doublons}>
+			#SET{id_trad,#GET{id_trad}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_TRAD}}}
+			<a href="#URL_ARTICLE" title="<:back_to:> #TITRE">#TITRE</a>			
+		</BOUCLE_trad_lang>	
+			<BOUCLE_trad_or(ARTICLES){id_trad}{origine_traduction} {id_trad !IN #GET{id_trad}}{doublons}>
+				#SET{id_trad,#GET{id_trad}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_TRAD}}}
+				<a href="#URL_ARTICLE" title="<:back_to:> #TITRE">#TITRE [#LANG]</a>		
+			</BOUCLE_trad_or>
+				<BOUCLE_non_trad(ARTICLES){id_article}>
+					<a href="#URL_ARTICLE" title="<:back_to:> #TITRE">#TITRE [#LANG]</a>		
+				</BOUCLE_non_trad>			
+			<//B_trad_or>
+		<//B_trad_lang>					
+	</BOUCLE_art_base>
+</BOUCLE_art_lie>
+</div>
+</B_art_lie>
+
+
+
+
+ <BOUCLE_art(ARTICLES){id_article}>
+    #SET{cookie,#EVAL{$_COOKIE['#HASH']}}
+ </BOUCLE_art>
+
+
+[(#AUTORISER{modifier,article,#ID_ARTICLE}|oui|ou{#GET{cookie}|oui})
+	[(#ENV{edition}|non)<a class="ajax modify open" href="[(#SELF|parametre_url{edition,mod})]" title="<:modify_contribution:>" rel="nofollow"><:modify_contribution:></a>]
+	[(#ENV{edition}|oui)<a class="ajax modify close"  href="[(#SELF|parametre_url{edition,''})]" title="<:modify_contribution_close:>"  rel="nofollow"><:modify_contribution_close:></a>]
+]
+
+
+
+<BOUCLE_test_wiki(CONDITION){si (#ID_RUBRIQUE|in_array{#ID_RUBRIQUE|is_wiki{array}}|oui|et{#ID_ARTICLE|oui})}>
+	<B_type>
+	<div class="liste types">
+		<h3><:add_content:></h3>
+		<ul class="liste-items">
+		<BOUCLE_type(DATA){source table,#CONFIG{a2a/types_liaisons}}{cle!=ressource}>
+			<li class="item hentry"><a href="[(#URL_PAGE{edition_publique}|parametre_url{objet,article}|parametre_url{edition,new}|parametre_url{type_lien,#CLE}|parametre_url{link_source,#ID_ARTICLE}|parametre_url{lang_dest,#ENV{lang_dest,#ENV{lang}}})]#form_wiki" title="[(#VALEUR|_T)]" >[(#VALEUR|_T)]</a></li>
+		</BOUCLE_type>
+		</ul>
+	</div>
+	</B_type>
+</BOUCLE_test_wiki>
+		[(#ENV{type}|!={edition_publique}|oui)<div class="add_ressource"><a href="[(#URL_PAGE{edition_publique}|parametre_url{lang_dest,#ENV{lang}}|parametre_url{objet,article})]" rel="nofollow" class='add_ressource'><:add_ressource:></a></div>]
+<//B_test_wiki>
+
+
+
+#SET{rubriques_wiki,(#CONFIG{wiki_cso/rubriques_wiki}|picker_selected{rubrique})}
+
+
+
+<B_shortcuts>
+	<div class="liste shortcuts">
+		<h3><:shortcuts:></h3>
+		<ul class="liste-items">
+		<BOUCLE_shortcuts(SELECTION_OBJETS) {lang} {par ordre} {si #ENV{id_rubrique}|=={1}}>
+			<li class="item hentry">[(#ID_OBJET|url_objet{#OBJET})]</li>
+		</BOUCLE_shortcuts>
+		</ul>
+	</div>
+</B_shortcuts>
+
+<B_docs>
+	<div class="liste docs">
+		<h3><:docs_rel:></h3>
+		<ul class="liste-items">		
+	<BOUCLE_docs(DOCUMENTS){id_article}{extension !IN png,jpg,gif,tiff}>
+		[
+		<li  class="item hentry">
+			<a href="(#URL_DOCUMENT)" type="#MIME_TYPE" class="spip_doc[ (#EXTENSION|attribut_html)]"><strong class="#EDIT{titre} titre">[(#TITRE|sinon{[(#FICHIER|basename|couper{80})]})]</strong>
+			<small class="info_document">([<abbr title="<:info_document:> #TYPE_DOCUMENT" class="ext">(#EXTENSION|strtoupper)</abbr> - ][<span>(#TAILLE|taille_en_octets)</span>])</small></a>
+		]
+	</BOUCLE_docs>
+		</ul>
+	</div>
+</B_docs>
+

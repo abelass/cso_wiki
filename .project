@@ -4,6 +4,7 @@
 	<comment></comment>
 	<projects>
 		<project>edition_pub</project>
+		<project>plugibn edition_pub</project>
 		<project>plugin edition_pub</project>
 		<project>Plugin wiki-cso</project>
 	</projects>
