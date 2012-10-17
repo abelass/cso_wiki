@@ -32,13 +32,7 @@
 
 
 
-
- <BOUCLE_art(ARTICLES){id_article}>
-    #SET{cookie,#EVAL{$_COOKIE['#HASH']}}
- </BOUCLE_art>
-
-
-[(#AUTORISER{modifier,article,#ID_ARTICLE}|oui|ou{#GET{cookie}|oui})
+[(#AUTORISER{modifier,article,#ID_ARTICLE}|oui|ou{#ENV{cookie_art}|oui})
 	[(#ENV{edition}|non)<a class="ajax modify open" href="[(#SELF|parametre_url{edition,mod})]" title="<:modify_contribution:>" rel="nofollow"><:modify_contribution:></a>]
 	[(#ENV{edition}|oui)<a class="ajax modify close"  href="[(#SELF|parametre_url{edition,''})]" title="<:modify_contribution_close:>"  rel="nofollow"><:modify_contribution_close:></a>]
 ]
