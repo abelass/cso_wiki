@@ -3,7 +3,7 @@
     <BOUCLE_champs_extras(DATA){source tableau,#ENV{liste}}>
      #SET{val,''}
      #SET{val,#ID_ARTICLE|generer_info_entite{article,#VALEUR}}
-     [(#GET{val}|oui)<dt><span class="open">-</span><span class="closed">+</span> [(#VAL{wiki_cso:#VALEUR}|_T{#ARRAY{titre,#TITRE}})]</dt>]   
+     [(#GET{val}|oui)<dt><span class="open">-</span><span class="closed">+</span> [(#VAL{wiki_cso:[(#VALEUR)]_[(#ID_RUBRIQUE)]}|_T{#ARRAY{titre,#TITRE}})]</dt>]   
      <BOUCLE_a(ARTICLES){id_article}{si #GET{val}|oui}>
         [<dd class="#EDIT{#VALEUR} #VALEUR">(#GET{val}|propre|typo)</dd>]
       </BOUCLE_a>

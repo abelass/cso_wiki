@@ -26,7 +26,7 @@
 	[<div class="#EDIT{chapo} chapo surlignable">(#CHAPO|image_reduire{500,0})</div>]
 	[<div class="#EDIT{texte} texte surlignable">(#TEXTE|image_reduire{500,0})</div>]
     [(#ID_RUBRIQUE|in_array{#GET{rubriques_wiki}}|oui)
-    <INCLURE{fond=inclure/champs_extras,id_article,titre,liste=#LISTE{extra_1,extra_2,extra_3,extra_4,extra_5,extra_6,extra_7,extra_8,extra_9,extra_10,extra_11}}/>
+    <INCLURE{fond=inclure/champs_extras,id_rubrique,id_article,titre,liste=#LISTE{extra_1,extra_2,extra_3,extra_4,extra_5,extra_6,extra_7,extra_8,extra_9,extra_10,extra_11}}/>
     ]
 	[<div class="#EDIT{hyperlien} hyperlien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></section>]
 	[<div class="#EDIT{ps} ps surlignable"><h2><:info_ps:></h2>(#PS|image_reduire{500,0})</div>]
