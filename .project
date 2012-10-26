@@ -3,8 +3,6 @@
 	<name>cso_wiki</name>
 	<comment></comment>
 	<projects>
-		<project>plugibn edition_pub</project>
-		<project>Plugin wiki-cso</project>
 	</projects>
 	<buildSpec>
 	</buildSpec>
