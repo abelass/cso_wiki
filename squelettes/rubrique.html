@@ -1,5 +1,7 @@
 <BOUCLE_principale_rubrique(RUBRIQUES){id_rubrique}{id_rubrique!=2}{tout}>
     <INCLURE{fond=structure}{env}{id_secteur=#ID_SECTEUR}{type=rubrique}{composition=#COMPOSITION} />
 </BOUCLE_principale_rubrique>
-    <INCLURE{fond=article,id_article=239,env}/>
+<BOUCLE_art(ARTICLES){id_trad=239}{lang}>
+<INCLURE{fond=structure,id_article,env,id_rubrique=#ENV{id_rubrique,#ID_RUBRIQUE},id_secteur=#ID_SECTEUR,type=article,composition=#COMPOSITION,id_trad,cookie_art=#EVAL{$_COOKIE['#HASH']}} />
+</BOUCLE_art>
 <//B_principale_rubrique>
