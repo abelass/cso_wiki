@@ -76,7 +76,7 @@
 	<div class="liste docs">
 		<h3><:docs_rel:></h3>
 		<ul class="liste-items">		
-	<BOUCLE_docs(DOCUMENTS){id_article}{extension !IN png,jpg,gif,tiff}>
+	<BOUCLE_docs(DOCUMENTS){id_article}{doublons}{mode=document}{extension !IN png,jpg,gif,tiff}>
 		[
 		<li  class="item hentry">
 			<a href="(#URL_DOCUMENT)" type="#MIME_TYPE" class="spip_doc[ (#EXTENSION|attribut_html)]"><strong class="#EDIT{titre} titre">[(#TITRE|sinon{[(#FICHIER|basename|couper{80})]})]</strong>
