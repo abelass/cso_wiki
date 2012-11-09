@@ -65,7 +65,7 @@
 	<div class="liste shortcuts">
 		<h3><:shortcuts:></h3>
 		<ul class="liste-items">
-		<BOUCLE_shortcuts(SELECTION_OBJETS) {lang} {par ordre} {si #ENV{id_rubrique}|=={1}}>
+		<BOUCLE_shortcuts(SELECTION_OBJETS) {lang} {par ordre} >
 			<li class="item hentry">[(#ID_OBJET|url_objet{#OBJET})]</li>
 		</BOUCLE_shortcuts>
 		</ul>
