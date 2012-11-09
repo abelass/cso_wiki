@@ -41,3 +41,10 @@
 	si l'option est cochee dans Configuration
 ]
 #INSERT_HEAD
+
+<script type="text/javascript">
+$('.faq a').live('click', function() {
+    window.open($(this).attr('href'));
+    return false;
+});
+</script>
