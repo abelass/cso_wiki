@@ -46,6 +46,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	//R
 	'recent_contributions'=>'Recent contributions',
 	'ressources'=>'Resources',
+
 	
 	//S
     'sense_trie_ascendant'=>'Ascendant',
