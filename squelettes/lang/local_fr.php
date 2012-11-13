@@ -16,7 +16,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// C
 	'case_study'=>'Cas pratique',
 	'changer_langue_contribution'=>'Changer la langue de cette contribution ',
-	'contributions'=>'Contributionbs',
+	'contributions'=>'Contributions',
 	'contribution_usefull'=>'Rating',
 	
 	//D
