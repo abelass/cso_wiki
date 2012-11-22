@@ -1,9 +1,6 @@
 #SET{rubriques_wiki,(#CONFIG{wiki_cso/rubriques_wiki}|picker_selected{rubrique})}
 #SET{rubriques_ressources_wiki,(#CONFIG{wiki_cso/rubriques_ressources_wiki}|picker_selected{rubrique})}
 <BOUCLE_content(ARTICLES){id_article}>
-<p id="hierarchie"><a href="#URL_SITE_SPIP/"><:accueil_site:></a><BOUCLE_ariane(HIERARCHIE){id_article}> &gt; <a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a></BOUCLE_ariane>[ &gt; <strong class="on">(#TITRE|couper{80})</strong>]</p>
-
-
 <div class="content-principal article" id="article_top">
 	<div class="cartouche header">
 		#SET{ip,#EVAL{$GLOBALS['ip']}}

@@ -1,8 +1,12 @@
-<div class="accueil">
-	[<a rel="start home" href="#URL_SITE_SPIP/" title="<:accueil_site:>">(#LOGO_SITE_SPIP||image_reduire{300,100})</a>]
-	<strong id="nom_site_spip"><a rel="start home" href="#URL_SITE_SPIP/" title="<:accueil_site:>">#NOM_SITE_SPIP</a></strong>
-	[<div id='slogan_site_spip'>(#SLOGAN_SITE_SPIP|PtoBR)</div>]
-	<INCLURE{fond=inclure/menu_langues,env,id_article,id_rubrique}/>
+<div class="tools">
+    <INCLURE{fond=inclure/menu_langues,env,id_article,id_rubrique}/>
+    <div class="social">
+        <a href=" title"><img src="#CHEMIN{css/img/connect-facebook.png}" alt="Facebook"/></a>
+        <a href=" title"><img src="#CHEMIN{css/img/connect-twitter.png}" alt="Twitter"/></a>        
+        <a href=" title"><img src="#CHEMIN{css/img/connect-linkedin.png}" alt="Linkedin"/></a>   
+        <a title="<:recommander:recommander:>"class="mediabox" href="[(#URL_PAGE{recommander}|parametre_url{id_article,#ID_ARTICLE}|parametre_url{id_rubrique,#ID_RUBRIQUE})]">
+            <img src="#CHEMIN{css/img/connect-subscribe.png}" alt="Linkedin"/>
+        </a>
+     
+    </div>
 </div>
-
-
