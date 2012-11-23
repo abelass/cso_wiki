@@ -23,11 +23,14 @@ body{
     color: #7b7979;
     font-family: "Arial","Lucida Grande",Lucida,"Lucida Sans Unicode",sans-serif;
     letter-spacing: 0.135em;
-    line-height: 1em;
 	}
 
 
-#page{width:960px;border:none;box-shadow: none;}
+#page{
+	width:960px;
+	border:none;
+	box-shadow: none;
+	line-height: 130%;}
 
 
 #entete {
@@ -40,11 +43,22 @@ body{
 	}
 
 .rubrique_home #contenu{
-    padding: 0 45px 0 0;
-    width: 290px;
+    padding:0;
+    width: 30%;
+    margin-right:5%;
 	}
 
-.rubrique_home #navigation{width:625px}
+.rubrique_home #navigation{width:65%}
+
+
+#pied {
+    background: #FFFFFF ;
+    border: none;
+    font-style:italic;
+    font-size: 70%;
+}
+
+#pied a{color:#9bd635}
 
 /*header*/
 
@@ -55,7 +69,7 @@ body{
 .social,.traductions{float:left}
 .social{margin-left:1.2em;}
 
-#nav{width:100%}
+#nav{width:100%; overflow: hidden;}
 
 #nav div{
 	float:left;
@@ -63,37 +77,71 @@ body{
 	font-size:1em;
 	text-transform: uppercase;
 	line-height: 2.7em;   
-	padding: 0 0.9em;
+	padding: 0 0 0 0.5%;
 	letter-spacing:0.1em}
 	
 #nav  a {color:white;background-color: #a7a9ac;}
 
-.menu-conteneur{width:54em;background-color: #a7a9ac;margin-right:6px; }
+
+#nav li.on a{
+    color: #000000;
+    font-weight:normal
+}
+
+.menu-conteneur{
+	width:74%;
+	background-color: #a7a9ac;
+	padding:0 0 0 1%; }
 .menu-liste {border-bottom: none;}
 
-#nav .menu-liste .menu-entree {margin: 0 0.2em 0 0;}
+#nav .menu-liste .menu-entree {margin: 0 0.5em 0 0;}
 
-.add_ressource{width: 15.55em;background-color: #a7a9ac;}
+.add_ressource{margin-left:1%;width: 24%;background-color: #a7a9ac;font-weight:bold;font-size:110%;}
 
 
-.formulaire_recherche{float:right}
+.formulaire_recherche{float:right; width: 34%;margin-top:0.5em}
 .formulaire_recherche label{display:none}
+
+/*general*/
+
+
 
 /*contenu*/
 
-.contenu-principal{margin-top:5em}
+.contenu-principal{margin-top:5em; position:reative;}
+
+.chapo{position:relative}
 
 /*home*/
 
+
 .left,.right{float:left}
 
-.rubrique_home .left{width:288px}
+.rubrique_home .left{
+	width:46%;
+	background: none repeat scroll 0 0 #A7A9AC;
+	}
 .rubrique_home .right{
-	width:304px;
-	padding:1.4em 0 0 33px
+	width :45%;
+	padding:1.4em 0 0 9%
 }
 
-.rubrique_home .title_block{height:222px;background:#a7a9ac;colour:#ffffff}
+.rubrique_home .contenu-principal p {margin-right:2em}
+
+.arrow{height: 10px;width:14px;position:absolute;right:0;}
+
+.up{
+	background:url('img/arrow-up.png') top right no-repeat;
+	top: 0;
+	}
+.down{
+	background:url('img/arrow-down.png') bottom right no-repeat;
+	bottom:0;
+	}	
+
+.tiles{background:#FFFFFF; overflow: hidden;padding-top:1em}
+
+.tiles img {margin: 0.8em 0.4em;}
 
 
 /*lists*/
@@ -106,6 +154,18 @@ body{
 
 .item .title a{font-weight:bold; font-size:110%; line-height:normal}
 
+#contenu .shortcuts .liste-items .item {
+    margin-bottom: 0.5em;
+}
+
+.shortcuts  .liste-items .item {
+
+    background: URL('img/dot.png') center left no-repeat;
+    padding-left:1em;
+    margin-left:0.8em;
+    font-weight:bold;
+    font-size:110%
+}
 
 /*notation*/
 .formulaire_notation {
@@ -126,6 +186,22 @@ div.star-rating-on a {
 
 div.rating-cancel a, div.star-rating a {
     width: 21px;
+}
+
+/*Forms*/
+
+.formulaire_recherche input.submit{display:none}
+
+.formulaire_spip input.text {
+    border: 2px solid #CCCBCB;
+    height: 1.5em;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.formulaire_recherche input.text {
+    background: url("img/search.png") no-repeat scroll right center #FFFFFF;
+
 }
 
 .display {display:block;width:100%;position:relative; margin:0.2em auto}

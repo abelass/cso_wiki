@@ -46,16 +46,9 @@
 
 
 
-<B_shortcuts>
-	<div class="liste shortcuts">
-		<h3><:shortcuts:></h3>
-		<ul class="liste-items">
-		<BOUCLE_shortcuts(SELECTION_OBJETS) {lang} {par ordre} {si #ENV{composition}|=={home}|non}>
-			<li class="item hentry">[(#ID_OBJET|url_objet{#OBJET,#TITRE,#URL})]</li>
-		</BOUCLE_shortcuts>
-		</ul>
-	</div>
-</B_shortcuts>
+[(#ENV{composition}|=={home}|non)
+    <INCLURE{fond=inclure/shortcuts}/>
+]
 
 <B_docs>
 	<div class="liste docs">
@@ -75,6 +68,7 @@
 [(#ENV{composition}|=={home}|oui)
     <div class="left">
         <div class="title_block">[(#LOGO_SITE_SPIP|inserer_attribut{alt,#NOM_SITE_SPIP})]</div>
+        <INCLURE{fond=inclure/principle_tiles}/>
     </div>
     <div class="right">
         
