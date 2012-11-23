@@ -69,14 +69,14 @@ body{
 .social,.traductions{float:left}
 .social{margin-left:1.2em;}
 
-#nav{width:100%; overflow: hidden;}
+#nav{width:100%; line-height: 2.7em;background:#B8FFB8}
 
 #nav div{
 	float:left;
 	height:35px; 
 	font-size:1em;
 	text-transform: uppercase;
-	line-height: 2.7em;   
+	height:36px;
 	padding: 0 0 0 0.5%;
 	letter-spacing:0.1em}
 	
@@ -96,9 +96,30 @@ body{
 
 #nav .menu-liste .menu-entree {margin: 0 0.5em 0 0;}
 
-.add_ressource{margin-left:1%;width: 24%;background-color: #a7a9ac;font-weight:bold;font-size:110%;}
+.add_ressource{
+	margin:-1px 0 0 1%;
+	width: 24%;
+	background-color: #a7a9ac;
+	font-weight:bold;
+	font-size:110%;
+	position:relative}
 
+.add_content{color:#FFFFFF; cursor: pointer;}
+.add_ressource  .liste-items{
+	display:none;
+	margin:0;
+	}
 
+.add_ressource:hover .liste-items{
+	background-color: #a7a9ac;
+	padding:1em;
+	display:block;
+	position:absolute;
+	top:2em;
+	left:0px;
+	z-index: 100;
+	}
+.add_ressource .liste-items li{position:relative;}	
 .formulaire_recherche{float:right; width: 34%;margin-top:0.5em}
 .formulaire_recherche label{display:none}
 
