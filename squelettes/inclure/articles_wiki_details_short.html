@@ -1,15 +1,17 @@
 <li class="item hentry">
-	<h4 class="h4 entry-title">[(#DATE|affdate{d.y})]
-	       <BOUCLE_art_lies(ARTICLES_LIES){id_article_lie=#ID_TRAD}{si #ID_TRAD|!={0}|oui}>
-        <span class="type">[(#TYPE_LIAISON|_T)]
+    <h4 class="h4 entry-title">[(#DATE|affdate{d.y})]
+           <BOUCLE_art_lies(ARTICLES_LIES){id_article_lie=#ID_TRAD}{si #ID_TRAD|!={0}|oui}>
+        <span class="type">[(#TYPE_LIAISON|_T)]</span>
+        
     </BOUCLE_art_lies>  
         <BOUCLE_art_lies_alter(ARTICLES_LIES){id_article_lie=#ID_ARTICLE}>
             <span class="type">[(#TYPE_LIAISON|_T)]</span>
         </BOUCLE_art_lies_alter>        
     <//B_art_lies>
-	    </h4>
-	<div class="title">
-	   <a href="#URL_ARTICLE" rel="bookmark">#TITRE [&#91;(#AFFICHER_LANG)&#93;] </a>
-	</div>
-	<BOUCLE_notations(ARTICLES){id_article}>#FORMULAIRE_NOTATION</BOUCLE_notations>
-</li>	
+        </h4>
+    <div class="title">
+       <a href="#URL_ARTICLE" rel="bookmark">#TITRE [&#91;(#AFFICHER_LANG)&#93;] </a>
+       [(#ENV{lang_sel}|non)<INCLURE{fond=inclure/wiki_trads,id_article,id_trad,env}/>]
+    </div>
+    <BOUCLE_notations(ARTICLES){id_article}>#FORMULAIRE_NOTATION</BOUCLE_notations>
+</li>   

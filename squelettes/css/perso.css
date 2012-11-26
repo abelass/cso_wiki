@@ -7,7 +7,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     text-transform: uppercase;
     color:#5e5b5b;
 	padding-bottom:0.9em; 
-	border-bottom:#cccbcb 2px solid
+	border-bottom:#cccbcb 2px solid;
+	clear:both;
 }
 
 h4,.h4{
@@ -42,13 +43,21 @@ body{
 	margin-top:0
 	}
 
+#contenu{padding:0}
 .rubrique_home #contenu{
     padding:0;
     width: 30%;
     margin-right:5%;
 	}
 
+.rubrique_wiki #contenu{
+	padding-left: 5.9%;
+    width: 94.1%;
+
+	}
+
 .rubrique_home #navigation{width:65%}
+
 
 
 #pied {
@@ -69,7 +78,12 @@ body{
 .social,.traductions{float:left}
 .social{margin-left:1.2em;}
 
-#nav{width:100%; line-height: 2.7em;background:#B8FFB8}
+#nav{
+	width:100%; 
+	line-height: 2.7em;
+	background:#B8FFB8;
+	position:relative;
+	}
 
 #nav div{
 	float:left;
@@ -78,7 +92,10 @@ body{
 	text-transform: uppercase;
 	height:36px;
 	padding: 0 0 0 0.5%;
-	letter-spacing:0.1em}
+	letter-spacing:0.1em;
+	}
+
+#nav #formulaire_recherche div{ width: 100%;padding-left: 20px;}
 	
 #nav  a {color:white;background-color: #a7a9ac;}
 
@@ -120,18 +137,66 @@ body{
 	z-index: 100;
 	}
 .add_ressource .liste-items li{position:relative;}	
-.formulaire_recherche{float:right; width: 34%;margin-top:0.5em}
+
+
+#nav div.formulaire_recherche{
+    background: none repeat scroll 0 0 transparent;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 4em;
+    width: 24%;
+    z-index: 200;
+    float:none
+	}
+	
+
+
+.rubrique_home .formulaire_recherche{
+	width: 34%;
+	}
+	
 .formulaire_recherche label{display:none}
 
 /*general*/
 
+.right{margin-top:4em}
 
+em {font-style: normal;text-transform:uppercase}
 
 /*contenu*/
 
+.chapo{position:relative}
+
 .contenu-principal{margin-top:5em; position:reative;}
 
-.chapo{position:relative}
+
+
+.rubrique_wiki .contenu-principal{
+	padding-top:1em;
+	margin:0;
+	background-color: #a7a9ac;
+	color: #FFFFFF;
+	width:42%;
+	float:left
+	}
+
+.rubrique_wiki h1, .rubrique_wiki .h1 {
+    color: #FFFFFF;
+    font-size: 1.2em;
+    border-bottom-color: #FFFFFF;
+    line-height:normal;
+    padding-bottom: 0.5em;
+}
+
+.rubrique_wiki .cartouche,.rubrique_wiki .chapo{padding:0 0.5em}
+
+.rubrique_wiki .right{width:53%;}
+
+.rubrique_wiki .tiles{padding-left:6%}
+
+
 
 /*home*/
 
@@ -143,11 +208,11 @@ body{
 	background: none repeat scroll 0 0 #A7A9AC;
 	}
 .rubrique_home .right{
-	width :45%;
-	padding:1.4em 0 0 9%
+	width :46%;
+	padding:1.4em 0 0 8%
 }
 
-.rubrique_home .contenu-principal p {margin-right:2em}
+.rubrique_home .contenu-principal p {margin-right:2em;}
 
 .arrow{height: 10px;width:14px;position:absolute;right:0;}
 
@@ -160,7 +225,7 @@ body{
 	bottom:0;
 	}	
 
-.tiles{background:#FFFFFF; overflow: hidden;padding-top:1em}
+.tiles{background:#FFFFFF; overflow: hidden;padding-top:1em; width: 100%;}
 
 .tiles img {margin: 0.8em 0.4em;}
 
@@ -175,6 +240,8 @@ body{
 
 .item .title a{font-weight:bold; font-size:110%; line-height:normal}
 
+
+
 #contenu .shortcuts .liste-items .item {
     margin-bottom: 0.5em;
 }
@@ -188,10 +255,51 @@ body{
     font-size:110%
 }
 
-/*notation*/
-.formulaire_notation {
-	margin: 0.5em 0;
+.liste-items .item .h3 {
+    border-bottom: none;
 }
+
+.item .soustitre{
+	background-color: 
+	#a7a6a6; 
+	width:100%; 
+	color:#FFFFFF;
+	line-height:1.5em;
+	color:white;
+	text-transform: uppercase;
+	padding:0.5em
+	}
+	
+.item .introduction{float:left; width: 25%;}
+
+.item .wiki {width:75%; float:left;}
+
+.item .wiki ul{width:95%;margin-left:5%}
+
+.item .wiki li{
+	width:31%; 
+	float:left;
+	clear:none;
+	padding: 0 1%;
+	}
+
+
+.item .add_ressource {
+    background-color: transparent;
+    font-size: 100%;
+    font-weight: normal;
+    margin: 0;
+    width: auto;
+}	
+	
+.item .meta-publi {clear:both;}	
+
+.item .meta-publi a{
+	background:url('img/read-more-arrow.png') center right no-repeat;
+	
+	padding-right:1em;
+	}
+/*Rating*/	
 
 div.star-rating, div.star-rating a {
     background: url("img/star.png") no-repeat scroll 0 0 transparent;
@@ -216,9 +324,9 @@ div.rating-cancel a, div.star-rating a {
 .formulaire_spip input.text {
     border: 2px solid #CCCBCB;
     height: 1.5em;
-    margin: 0 auto;
-    width: 80%;
+	width: 72%;
 }
+
 
 .formulaire_recherche input.text {
     background: url("img/search.png") no-repeat scroll right center #FFFFFF;
@@ -227,7 +335,7 @@ div.rating-cancel a, div.star-rating a {
 
 .display {display:block;width:100%;position:relative; margin:0.2em auto}
 .display div{display:block;width:45%;float:left;margin-right:1em}
-.orderby, .select{cursor:pointer; color:#A52A2A}
+.orderby, .select{cursor:pointer;}
 .orderby span {height:3em; overflow:auto;}
 .orderby span, .orderby span a{display:block;}
 
@@ -262,4 +370,5 @@ dt {
 	padding:1em;top:0;
 	right:0;}
 
-a, a:hover, a:active{color:#838181;}
+a	{color:#838181;}
+a:hover, a:active{color:#686767;}

@@ -4,8 +4,8 @@
 <BOUCLE_art(ARTICLES){id_rubrique IN #GET{rubriques_wiki}}{lang} {par num titre}>
 <a href="#URL_ARTICLE" title="[(#TITRE|textebrut)]">
     [(#LOGO_ARTICLE|!={''}|?{
-                [(#LOGO_ARTICLE|image_reduire{81,*})],
-                [(#INCLURE{fond=inclure/logo_art,width=81,height=*,id_trad})]
+                [(#LOGO_ARTICLE|image_reduire{#ENV{width,81},#ENV{height,*}})],
+                [(#INCLURE{fond=inclure/logo_art,width=#ENV{width,81},height=#ENV{height,*},id_trad})]
                 })]
     </a>
 

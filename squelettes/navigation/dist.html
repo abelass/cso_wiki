@@ -1,8 +1,3 @@
-[(#REM) Formumlaire de recherche]
-#FORMULAIRE_RECHERCHE
-
-
-
 [(#REM)Lien retour vers la page d'origine, si article traduit on prend le lien de l'origine de traduction]
 
 #SET{id_trad,#ARRAY{0,0}}
@@ -44,9 +39,9 @@
 #SET{rubriques_wiki,(#CONFIG{wiki_cso/rubriques_wiki}|picker_selected{rubrique})}
 
 
+#SET{no_shortcuts,#LISTE{home,wiki}}
 
-
-[(#ENV{composition}|=={home}|non)
+[(#ENV{composition}|in_array{#GET{no_shortcuts}}|non)
     <INCLURE{fond=inclure/shortcuts}/>
 ]
 

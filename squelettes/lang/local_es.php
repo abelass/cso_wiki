@@ -8,6 +8,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// A
 	'add_content'=>'Agregue un Recurso Nuevo:',
 	'add_ressource'=>'Agregue un Recurso',
+    'add_ressource_to'=>'Agregue un Recurso a',    	
 	'advanced_search'=>'Búsqueda avanzada',
 	
 	// B

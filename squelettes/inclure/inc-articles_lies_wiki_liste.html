@@ -6,11 +6,11 @@
 [(#ENV{trier_par}|=={lang}|oui)
 	#SET{langues,#ARRAY}
 	]
-
+[(#ENV{affichage}|oui)#SET{affichage,_#ENV{affichage}}]
 <B_wiki>
-<div class="liste articles"> 
+<div class="liste articles wiki"> 
 	[<p class="pagination">(#PAGINATION)</p>]
-	<h2><:contributions:></h2>
+	[(#ENV{afficher_titre}|oui)<h2><:contributions:></h2>]
 	<ul class="liste-items">
 	<BOUCLE_wiki(ARTICLES) {recherche ?}{id_rubrique IN #ENV{rubriques_wiki}} {id_article IN #ENV{articles_tous}}{0,#ENV{afficher,10000000}}{pagination 10}>[(#SET{id_trad2,#ID_TRAD})]
 		<BOUCLE_lang(ARTICLES){id_trad}{id_trad !IN #GET{id_trad}}{lang=#ENV{lang}}{si #ENV{wiki_search}|non|ou{#ENV{type_liaison}|oui}|et{#ENV{trier_par}|=={note}|non}}{id_trad!=0}>
@@ -34,7 +34,7 @@
 				#SET{langues,#GET{langues}|array_merge{#ARRAY{#LANG,#LANG}}}
 				]
 			[(#ENV{trier_par}|=={lang}|non)
-				<INCLURE{fond=inclure/articles_wiki_details,env,id_article,url_article,titre,time_difference=#GET{time_difference},id_trad=#GET{id_trad2},id_pays=#PAYS}/>
+				<INCLURE{fond=inclure/articles_wiki_details#GET{affichage},env,id_article,url_article,titre,time_difference=#GET{time_difference},id_trad=#GET{id_trad2},id_pays=#PAYS}/>
 				]		
 		</BOUCLE_lang>
 			<BOUCLE_lang_orig(ARTICLES){id_trad}{id_trad !IN #GET{id_trad}}{origine_traduction}{si #ENV{wiki_search}|non|ou{#ENV{type_liaison}|oui}|et{#ENV{trier_par}|=={note}|non}|et{#ENV{lang_sel}|non}}{id_trad!=0}>
@@ -59,7 +59,7 @@
 						#SET{langues,#GET{langues}|array_merge{#ARRAY{#LANG,#LANG}}}
 						]
 				[(#ENV{trier_par}|=={lang}|non)
-				<INCLURE{fond=inclure/articles_wiki_details,env,id_article,url_article,titre,time_difference=#GET{time_difference},id_trad=#GET{id_trad2},afficher_lang=#LANG,id_pays=#PAYS}/>
+				<INCLURE{fond=inclure/articles_wiki_details#GET{affichage},env,id_article,url_article,titre,time_difference=#GET{time_difference},id_trad=#GET{id_trad2},afficher_lang=#LANG,id_pays=#PAYS}/>
 				]
 			</BOUCLE_lang_orig>
 				<BOUCLE_non_trad(ARTICLES){id_article} {id_trad=0}{si #ENV{trier_par}|=={note}|non}>
@@ -85,7 +85,7 @@
 							#SET{langues,#GET{langues}|array_merge{#ARRAY{#LANG,#LANG}}}
 						]
 					[(#ENV{trier_par}|=={lang}|non)
-						<INCLURE{fond=inclure/articles_wiki_details,id_article,url_article,titre,time_difference=#GET{time_difference},env,id_trad=#GET{id_trad2},afficher_lang=#GET{lang},id_pays=#PAYS}/>
+						<INCLURE{fond=inclure/articles_wiki_details#GET{affichage},id_article,url_article,titre,time_difference=#GET{time_difference},env,id_trad=#GET{id_trad2},afficher_lang=#GET{lang},id_pays=#PAYS}/>
 					]
 				</BOUCLE_non_trad>
 					<BOUCLE_trads_autres_langues(ARTICLES){id_article}{si #ENV{trier_par}|=={note}|non|et{#ENV{lang_sel}|non}}>
@@ -111,7 +111,7 @@
 								#SET{langues,#GET{langues}|array_merge{#ARRAY{#LANG,#LANG}}}
 							]
 						[(#ENV{trier_par}|=={lang}|non)
-							<INCLURE{fond=inclure/articles_wiki_details,id_article,url_article,titre,time_difference=#GET{time_difference},env,id_trad=#GET{id_trad2},afficher_lang=#GET{lang},id_pays=#PAYS}/>
+							<INCLURE{fond=inclure/articles_wiki_details#GET{affichage},id_article,url_article,titre,time_difference=#GET{time_difference},env,id_trad=#GET{id_trad2},afficher_lang=#GET{lang},id_pays=#PAYS}/>
 						]
 					</BOUCLE_trads_autres_langues>				
 				<//B_non_trad>	
@@ -140,7 +140,7 @@
 					#SET{langues,#GET{langues}|array_merge{#ARRAY{#LANG,#LANG}}}
 				]
 			[(#ENV{trier_par}|=={lang}|non)
-				<INCLURE{fond=inclure/articles_wiki_details,id_article,url_article,titre,time_difference=#GET{time_difference},env,afficher_lang=#GET{lang},id_pays=#PAYS,id_trad=#GET{id_trad2}}/>
+				<INCLURE{fond=inclure/articles_wiki_details#GET{affichage},id_article,url_article,titre,time_difference=#GET{time_difference},env,afficher_lang=#GET{lang},id_pays=#PAYS,id_trad=#GET{id_trad2}}/>
 				]
 		</BOUCLE_exception>				
 					
