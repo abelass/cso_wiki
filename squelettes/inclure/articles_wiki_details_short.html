@@ -1,4 +1,5 @@
-<li class="item hentry">
+<li class="item hentry[(#ENV{compteur_boucle}|=={1}|oui) first][(#ENV{compteur_boucle}|=={#ENV{total_boucle}}|oui) last]">
+    [(#ENV{compteur_boucle}|=={1}|oui)<div class="separateur first">&nbsp;</div>]
     <h4 class="h4 entry-title">[(#DATE|affdate{d.y})]
            <BOUCLE_art_lies(ARTICLES_LIES){id_article_lie=#ID_TRAD}{si #ID_TRAD|!={0}|oui}>
         <span class="type">[(#TYPE_LIAISON|_T)]</span>
@@ -14,4 +15,5 @@
        [(#ENV{lang_sel}|non)<INCLURE{fond=inclure/wiki_trads,id_article,id_trad,env}/>]
     </div>
     <BOUCLE_notations(ARTICLES){id_article}>#FORMULAIRE_NOTATION</BOUCLE_notations>
+    [(#ENV{compteur_boucle}|et{#ENV{compteur_boucle}|=={#ENV{total_boucle}}}|oui)<div class="separateur last">&nbsp;</div>]
 </li>   
