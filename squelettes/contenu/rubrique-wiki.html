@@ -8,8 +8,7 @@
 
 	<div class="cartouche">
 		<h1 class="h1 #EDIT{titre}">#TITRE</h1>
-	[(#REM) Boite à outils]
-		[(#INCLURE{fond=inclure/outils,env,classe=absolute})]
+
 	</div>
 
 	[<div class="#EDIT{texte} chapo">(#TEXTE)</div>]
@@ -41,6 +40,7 @@
 		<h3 class="h3 entry-title #EDIT{titre}"><a href="#URL_ARTICLE" rel="bookmark">#TITRE</a></h3>
 		<div class="soustitre #EDIT{soustitre}">[(#SOUSTITRE|sinon{&nbsp;})]</div>
 		[<div class="#EDIT{intro} introduction entry-content">(#INTRODUCTION)</div>]
+		
 		<INCLURE{fond=inclure/inc-articles_lies_wiki_liste,afficher=3,env,articles_tous=#GET{articles_tous},rubriques_wiki=#GET{rubriques_wiki},type_liaison=#GET{types_wiki},affichage=short}/>
 		<div class="meta-publi">
 		<a class="lire-la-suite" href="#URL_ARTICLE"><:zpip:lire_la_suite:><span class="lire-la-suite-titre"><:zpip:lire_la_suite_de:> <em>#TITRE</em></span></a>
