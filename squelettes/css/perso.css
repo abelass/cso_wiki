@@ -159,6 +159,24 @@ body{
 	
 .formulaire_recherche label{display:none}
 
+/*The pronciples colors*/
+
+.id_1 h3 a{color:#ed1c24}
+
+.id_248 h3 a{color:#8d188f}
+
+.id_250 h3 a{color:#2e3192}
+
+.id_251 h3 a{color:#00a650}
+
+.id_252 h3 a{color:#fedd0f}
+
+.id_253 h3 a{color:#00adef}
+
+.id_254 h3 a{color:#855232}
+
+.id_255 h3 a{color:#f68712}
+
 /*general*/
 
 .right{margin-top:4em}
@@ -175,7 +193,7 @@ em {font-style: normal;text-transform:uppercase}
 
 .rubrique_wiki .contenu-principal{
 	padding-top:1em;
-	margin:0;
+	margin: 0 0 2em;
 	background-color: #a7a9ac;
 	color: #FFFFFF;
 	width:42%;
@@ -257,11 +275,12 @@ em {font-style: normal;text-transform:uppercase}
 
 .liste-items .item .h3 {
     border-bottom: none;
+    margin-bottom: 0.8em;
+    padding-bottom: 0;
 }
 
 .item .soustitre{
-	background-color: 
-	#a7a6a6; 
+	background-color: #a7a6a6; 
 	width:100%; 
 	color:#FFFFFF;
 	line-height:1.5em;
@@ -270,18 +289,57 @@ em {font-style: normal;text-transform:uppercase}
 	padding:0.5em
 	}
 	
+.id_1 .soustitre{background-color:#ed1c24}
+
+.id_248 .soustitre{background-color:#8d188f}
+
+.id_250 .soustitre{background-color:#2e3192}
+
+.id_251 .soustitre{background-color:#00a650}
+
+.id_252 .soustitre{background-color:#fedd0f}
+
+.id_253 .soustitre{background-color:#00adef}
+
+.id_254 .soustitre{background-color:#855232}
+
+.id_255 .soustitre{background-color:#f68712}	
+	
 .item .introduction{float:left; width: 25%;}
 
-.item .wiki {width:75%; float:left;}
+.item .wiki {width:75%; float:left;position:relative;z-index:200}
 
-.item .wiki ul{width:95%;margin-left:5%}
-
-.item .wiki li{
-	width:31%; 
-	float:left;
-	clear:none;
-	padding: 0 1%;
+.item .wiki ul{
+	width:95%;
+	margin-left:5%;
+	position:relative;
+	overflow:hidden;
 	}
+
+
+.separateur{
+	background: none repeat scroll 0 0 #A7A6A6;
+    height: 500px;
+    position: absolute;
+    top: 3em;
+    width: 2px;
+    z-index:100}
+
+.item div.first{right:-5%}
+.item div.last{left:-10%}
+
+#contenu .item .wiki li {
+    clear: none;
+    float: left;
+    list-style: none outside none;
+    margin: 0 2%;
+    overflow: visible;
+    padding: 0 1%;
+    position: relative;
+    width: 27%;
+}
+
+
 
 
 .item .add_ressource {
@@ -296,7 +354,6 @@ em {font-style: normal;text-transform:uppercase}
 
 .item .meta-publi a{
 	background:url('img/read-more-arrow.png') center right no-repeat;
-	
 	padding-right:1em;
 	}
 /*Rating*/	
@@ -316,6 +373,7 @@ div.star-rating-on a {
 div.rating-cancel a, div.star-rating a {
     width: 21px;
 }
+
 
 /*Forms*/
 
