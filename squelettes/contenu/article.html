@@ -5,7 +5,6 @@
 	<div class="cartouche header">
 		#SET{ip,#EVAL{$GLOBALS['ip']}}
 		[(#ENV{edition}|=={new}|non)
-			[(#LOGO_ARTICLE|image_reduire{200,200})]
 			[<p class="#EDIT{surtitre} surtitre">(#SURTITRE)</p>]
 			<h1 class="h1 [(#EDIT{titre})]">[(#TITRE)] </h1>[<div>(#ID_RUBRIQUE|in_array{#GET{rubriques_ressources_wiki}}|oui)#FORMULAIRE_NOTATION</div>]
 			[<p class="#EDIT{soustitre} soustitre">(#SOUSTITRE)</p>]
