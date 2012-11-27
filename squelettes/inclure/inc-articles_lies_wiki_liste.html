@@ -37,7 +37,7 @@
 				#SET{langues,#GET{langues}|array_merge{#ARRAY{#LANG,#LANG}}}
 				]
 			[(#ENV{trier_par}|=={lang}|non)
-				<INCLURE{fond=inclure/articles_wiki_details#GET{affichage},env,id_article,url_article,titre,time_difference=#GET{time_difference},id_trad=#GET{id_trad2},id_pays=#PAYS,compteur_boucle=#GET{compteur_boucle},total_boucle=#GET{total_boucle}}/>
+				<INCLURE{fond=inclure/articles_wiki_details#GET{affichage},env,id_article,url_article,titre,time_difference=#GET{time_difference},id_trad=#GET{id_trad2},id_pays=#PAYS,compteur_boucle=#GET{compteur_boucle},total_boucle=#GET{total_boucle},date}/>
 				]		
 		</BOUCLE_lang>
 			<BOUCLE_lang_orig(ARTICLES){id_trad}{id_trad !IN #GET{id_trad}}{origine_traduction}{si #ENV{wiki_search}|non|ou{#ENV{type_liaison}|oui}|et{#ENV{trier_par}|=={note}|non}|et{#ENV{lang_sel}|non}}{id_trad!=0}>
@@ -62,7 +62,7 @@
 						#SET{langues,#GET{langues}|array_merge{#ARRAY{#LANG,#LANG}}}
 						]
 				[(#ENV{trier_par}|=={lang}|non)
-				<INCLURE{fond=inclure/articles_wiki_details#GET{affichage},env,id_article,url_article,titre,time_difference=#GET{time_difference},id_trad=#GET{id_trad2},afficher_lang=#LANG,id_pays=#PAYS,compteur_boucle=#GET{compteur_boucle},total_boucle=#GET{total_boucle}}/>
+				<INCLURE{fond=inclure/articles_wiki_details#GET{affichage},env,id_article,url_article,titre,time_difference=#GET{time_difference},id_trad=#GET{id_trad2},afficher_lang=#LANG,id_pays=#PAYS,compteur_boucle=#GET{compteur_boucle},total_boucle=#GET{total_boucle},date}/>
 				]
 			</BOUCLE_lang_orig>
 				<BOUCLE_non_trad(ARTICLES){id_article} {id_trad=0}{si #ENV{trier_par}|=={note}|non}>
@@ -88,7 +88,7 @@
 							#SET{langues,#GET{langues}|array_merge{#ARRAY{#LANG,#LANG}}}
 						]
 					[(#ENV{trier_par}|=={lang}|non)
-						<INCLURE{fond=inclure/articles_wiki_details#GET{affichage},id_article,url_article,titre,time_difference=#GET{time_difference},env,id_trad=#GET{id_trad2},afficher_lang=#GET{lang},id_pays=#PAYS,compteur_boucle=#GET{compteur_boucle},total_boucle=#GET{total_boucle}}/>
+						<INCLURE{fond=inclure/articles_wiki_details#GET{affichage},id_article,url_article,titre,time_difference=#GET{time_difference},env,id_trad=#GET{id_trad2},afficher_lang=#GET{lang},id_pays=#PAYS,compteur_boucle=#GET{compteur_boucle},total_boucle=#GET{total_boucle},date}/>
 					]
 				</BOUCLE_non_trad>
 					<BOUCLE_trads_autres_langues(ARTICLES){id_article}{si #ENV{trier_par}|=={note}|non|et{#ENV{lang_sel}|non}}>
@@ -114,7 +114,7 @@
 								#SET{langues,#GET{langues}|array_merge{#ARRAY{#LANG,#LANG}}}
 							]
 						[(#ENV{trier_par}|=={lang}|non)
-							<INCLURE{fond=inclure/articles_wiki_details#GET{affichage},id_article,url_article,titre,time_difference=#GET{time_difference},env,id_trad=#GET{id_trad2},afficher_lang=#GET{lang},id_pays=#PAYS,compteur_boucle=#GET{compteur_boucle},total_boucle=#GET{total_boucle}}/>
+							<INCLURE{fond=inclure/articles_wiki_details#GET{affichage},id_article,url_article,titre,time_difference=#GET{time_difference},env,id_trad=#GET{id_trad2},afficher_lang=#GET{lang},id_pays=#PAYS,compteur_boucle=#GET{compteur_boucle},total_boucle=#GET{total_boucle},date}/>
 						]
 					</BOUCLE_trads_autres_langues>				
 				<//B_non_trad>	
@@ -143,7 +143,7 @@
 					#SET{langues,#GET{langues}|array_merge{#ARRAY{#LANG,#LANG}}}
 				]
 			[(#ENV{trier_par}|=={lang}|non)
-				<INCLURE{fond=inclure/articles_wiki_details#GET{affichage},id_article,url_article,titre,time_difference=#GET{time_difference},env,afficher_lang=#GET{lang},id_pays=#PAYS,id_trad=#GET{id_trad2},compteur_boucle=#GET{compteur_boucle},total_boucle=#GET{total_boucle}}/>
+				<INCLURE{fond=inclure/articles_wiki_details#GET{affichage},id_article,url_article,titre,time_difference=#GET{time_difference},env,afficher_lang=#GET{lang},id_pays=#PAYS,id_trad=#GET{id_trad2},compteur_boucle=#GET{compteur_boucle},total_boucle=#GET{total_boucle},date}/>
 				]
 		</BOUCLE_exception>				
 					
@@ -161,7 +161,7 @@
 			
 			
 		<BOUCLE_afficher_liste(DATA){source tableau,#GET{merge_langues}}{par /1}{inverse #ENV{senstri,0}}>
-			<BOUCLE_afficher_liste2(DATA){source tableau,#VALEUR}>			<INCLURE{fond=inclure/articles_wiki_details#GET{affichage},id_article=#VALEUR{id_article},url_article=#VALEUR{ur_article},titre=#VALEUR{titre},time_difference=#VALEUR{time_difference},id_trad=#ID_TRAD,env,afficher_lang=#VALEUR{afficher_lang},id_pays=#VALEUR{id_pays},lang_sel=oui,compteur_boucle=#GET{compteur_boucle},total_boucle=#GET{total_boucle}}/>
+			<BOUCLE_afficher_liste2(DATA){source tableau,#VALEUR}>			<INCLURE{fond=inclure/articles_wiki_details#GET{affichage},id_article=#VALEUR{id_article},url_article=#VALEUR{ur_article},titre=#VALEUR{titre},time_difference=#VALEUR{time_difference},id_trad=#ID_TRAD,env,afficher_lang=#VALEUR{afficher_lang},id_pays=#VALEUR{id_pays},lang_sel=oui,compteur_boucle=#GET{compteur_boucle},total_boucle=#GET{total_boucle},date}/>
 			</BOUCLE_afficher_liste2>
 			</B_afficher_liste2>		
 		</BOUCLE_afficher_liste>	
