@@ -15,7 +15,7 @@
 </div>
 
 <div class="right">
-    <INCLURE{fond=inclure/principle_tiles,width=138}/>
+    <INCLURE{fond=inclure/principle_tiles,width=138,id_rubrique=''}/>
 </div>
 
 
@@ -42,6 +42,7 @@
 		[<div class="#EDIT{intro} introduction entry-content">(#INTRODUCTION)</div>]
 		
 		<INCLURE{fond=inclure/inc-articles_lies_wiki_liste,afficher=3,env,articles_tous=#GET{articles_tous},rubriques_wiki=#GET{rubriques_wiki},type_liaison=#GET{types_wiki},affichage=short}/>
+
 		<div class="meta-publi">
 		<a class="lire-la-suite" href="#URL_ARTICLE"><:zpip:lire_la_suite:><span class="lire-la-suite-titre"><:zpip:lire_la_suite_de:> <em>#TITRE</em></span></a>
 		<div class="add_ressource"><a href="[(#URL_PAGE{edition_publique}|parametre_url{objet,article}|parametre_url{link_source,#ID_ARTICLE})]"><:add_ressource_to:>  <em>#TITRE</em></a></div>		

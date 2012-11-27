@@ -1,0 +1,216 @@
+#SET{compteur,0}
+#SET{id_trad,#ARRAY{}}
+#SET{trier,#ENV{trier,date}}
+[(#ENV{trier}|=={rien}|oui)#SET{trier,' '}]
+
+
+
+
+
+
+
+[(#ENV{trier_par}|=={lang}|oui)
+	#SET{langues,#ARRAY}
+	]
+[(#ENV{affichage}|oui)#SET{affichage,_#ENV{affichage}}]
+<B_wiki>
+<div class="liste articles wiki"> 
+	[<p class="pagination">(#PAGINATION)</p>]
+	[(#ENV{afficher_titre}|oui)<h2><:contributions:></h2>]
+	<table class="liste-items">
+	    <thead>
+	         <td class="title"><:title:></td>
+	         <td class="title">
+	             <a class="ajax" href="[(#SELF|parametre_url{trier_par,moyenne})]" title="<:note:>"><:moyenne:></a>
+	                             [(#GET{senstri}|=={0}?{
+                <a class="ajax" href="[(#SELF|parametre_url{senstri,1})]" title="<:sense_trie_ascendant:>"><img src="[(#CHEMIN{prive/images/deplierbas.gif})]" alt="down"/> <:sense_trie_ascendant:></a>
+                ,
+                <a class="ajax" href="[(#SELF|parametre_url{senstri,0})]" title="<:sense_trie_descendant:>"><img src="[(#CHEMIN{prive/images/deplierhaut.gif})]" alt="up"/> <:sense_trie_descendant:></a>           
+                })]
+	             </td>
+	         <td class="title">
+	             <a class="ajax" href="[(#SELF|parametre_url{trier_par,type_liaison})]" title="<:type_liaison:>"><:type_liaison:></a>
+	             [(#GET{senstri}|=={0}?{
+                <a class="ajax" href="[(#SELF|parametre_url{senstri,1})]" title="<:sense_trie_ascendant:>"><img src="[(#CHEMIN{prive/images/deplierbas.gif})]" alt="down"/> <:sense_trie_ascendant:></a>
+                ,
+                <a class="ajax" href="[(#SELF|parametre_url{senstri,0})]" title="<:sense_trie_descendant:>"><img src="[(#CHEMIN{prive/images/deplierhaut.gif})]" alt="up"/> <:sense_trie_descendant:></a>           
+                })]
+	         </td>
+	         <td class="title">
+	            <a class="ajax" href="[(#SELF|parametre_url{trier_par,lang})]" title="<:language:>"><:lang:></a>
+	                             [(#GET{senstri}|=={0}?{
+                <a class="ajax" href="[(#SELF|parametre_url{senstri,1})]" title="<:sense_trie_ascendant:>"><img src="[(#CHEMIN{prive/images/deplierbas.gif})]" alt="down"/> <:sense_trie_ascendant:></a>
+                ,
+                <a class="ajax" href="[(#SELF|parametre_url{senstri,0})]" title="<:sense_trie_descendant:>"><img src="[(#CHEMIN{prive/images/deplierhaut.gif})]" alt="up"/> <:sense_trie_descendant:></a>           
+                })]
+	        </td>	         	         
+	    </thead>
+	    <tbody>
+	<BOUCLE_wiki(ARTICLES){id_rubrique IN #ENV{rubriques_wiki}} {id_article IN #ENV{articles_tous}}{0,#ENV{afficher,10000000}}{pagination 10}>
+	[(#SET{id_trad2,#ID_TRAD})]
+	#SET{compteur_boucle,#COMPTEUR_BOUCLE}
+    #SET{total_boucle,#TOTAL_BOUCLE}	
+		<BOUCLE_lang(ARTICLES){id_trad}{id_trad !IN #GET{id_trad}}{si #ENV{wiki_search}|non|ou{#ENV{type_liaison}|oui}|et{#ENV{trier_par}|=={note}|non}}{id_trad!=0}>
+			#SET{compteur,(#GET{compteur}|plus{1})}
+			#SET{id_trad,#GET{id_trad}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_TRAD}}}
+			#SET{time_difference,(#GET{date_today}|strtotime|moins{#DATE|strtotime}|div{86400}|round)}
+			[(#ENV{trier_par}|=={lang}|oui)
+				[(#LANG|in_array{#GET{langues}}|non)
+					#SET{#LANG,#ARRAY}
+					]
+				#SET{#LANG,#GET{#LANG}|array_merge{
+							#ARRAY{
+								#COMPTEUR_BOUCLE,#ARRAY{
+										id_article,#ID_ARTICLE,			
+										titre,#TITRE,
+										url_article,#URL_ARTICLE,
+										time_difference,#GET{time_difference},
+										id_trad,#ID_TRAD,
+										id_pays,#PAYS,
+										lang,#LANG
+										}}}}	
+				#SET{langues,#GET{langues}|array_merge{#ARRAY{#LANG,#LANG}}}
+				]
+			[(#ENV{trier_par}|=={lang}|non)
+				<INCLURE{fond=inclure/articles_wiki_details#GET{affichage},env,id_article,url_article,titre,time_difference=#GET{time_difference},id_trad=#GET{id_trad2},id_pays=#PAYS,compteur_boucle=#GET{compteur_boucle},total_boucle=#GET{total_boucle},date}/>
+				]		
+		</BOUCLE_lang>
+			<BOUCLE_lang_orig(ARTICLES){id_trad}{id_trad !IN #GET{id_trad}}{origine_traduction}{si #ENV{wiki_search}|non|ou{#ENV{type_liaison}|oui}|et{#ENV{trier_par}|=={note}|non}|et{#ENV{lang_sel}|non}}{id_trad!=0}>
+				#SET{compteur,(#GET{compteur}|plus{1})}
+				#SET{id_trad,#GET{id_trad}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_TRAD}}}
+				#SET{time_difference,(#GET{date_today}|strtotime|moins{#DATE|strtotime}|div{86400}|round)}
+				[(#ENV{trier_par}|=={lang}|oui)
+					[(#LANG|in_array{#GET{langues}}|non)
+						#SET{#LANG,#ARRAY}
+						]
+					#SET{#LANG,#GET{#LANG}|array_merge{
+								#ARRAY{
+									#COMPTEUR_BOUCLE,#ARRAY{
+											id_article,#ID_ARTICLE,			
+											titre,#TITRE,
+											url_article,#URL_ARTICLE,
+											time_difference,#GET{time_difference},
+											id_trad,#ID_TRAD,
+											id_pays,#PAYS,
+                                            lang,#GET{lang}
+											}}}}	
+						#SET{langues,#GET{langues}|array_merge{#ARRAY{#LANG,#LANG}}}
+						]
+				[(#ENV{trier_par}|=={lang}|non)
+				<INCLURE{fond=inclure/articles_wiki_details#GET{affichage},env,id_article,url_article,titre,time_difference=#GET{time_difference},id_trad=#GET{id_trad2},afficher=#LANG,id_pays=#PAYS,compteur_boucle=#GET{compteur_boucle},total_boucle=#GET{total_boucle},date}/>
+				]
+			</BOUCLE_lang_orig>
+				<BOUCLE_non_trad(ARTICLES){id_article} {id_trad=0}{si #ENV{trier_par}|=={note}|non}>
+					#SET{compteur,(#GET{compteur}|plus{1})}	
+					#SET{id_trad,#GET{id_trad}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_TRAD}}}	
+					#SET{time_difference,(#GET{date_today}|strtotime|moins{#DATE|strtotime}|div{86400}|round)}	
+					[(#LANG|=={#ENV{lang}}|?{#SET{lang,''},#SET{lang,#LANG}})]
+					[(#ENV{trier_par}|=={lang}|oui)
+						[(#LANG|in_array{#GET{langues}}|non)
+							#SET{#LANG,#ARRAY}
+							]
+						#SET{#LANG,#GET{#LANG}|array_merge{
+									#ARRAY{
+										#COMPTEUR_BOUCLE,#ARRAY{
+												id_article,#ID_ARTICLE,			
+												titre,#TITRE,
+												url_article,#URL_ARTICLE,
+												time_difference,#GET{time_difference},
+												id_trad,#ID_TRAD,
+												id_pays,#PAYS,
+                                                lang,#LANG
+                                        }}}}    
+												}}}}	
+							#SET{langues,#GET{langues}|array_merge{#ARRAY{#LANG,#LANG}}}
+						]
+					[(#ENV{trier_par}|=={lang}|non)
+						<INCLURE{fond=inclure/articles_wiki_details#GET{affichage},id_article,url_article,titre,time_difference=#GET{time_difference},env,id_trad=#GET{id_trad2},lang=#GET{lang},id_pays=#PAYS,compteur_boucle=#GET{compteur_boucle},total_boucle=#GET{total_boucle},date}/>
+					]
+				</BOUCLE_non_trad>
+					<BOUCLE_trads_autres_langues(ARTICLES){id_article}{si #ENV{trier_par}|=={note}|non|et{#ENV{lang_sel}|non}}>
+						#SET{compteur,(#GET{compteur}|plus{1})}	
+						#SET{id_trad,#GET{id_trad}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_TRAD}}}	
+						#SET{time_difference,(#GET{date_today}|strtotime|moins{#DATE|strtotime}|div{86400}|round)}	
+						[(#LANG|=={#ENV{lang}}|?{#SET{lang,''},#SET{lang,#LANG}})]
+						[(#ENV{trier_par}|=={lang}|oui)
+							[(#LANG|in_array{#GET{langues}}|non)
+								#SET{#LANG,#ARRAY}
+								]
+							#SET{#LANG,#GET{#LANG}|array_merge{
+										#ARRAY{
+											#COMPTEUR_BOUCLE,#ARRAY{
+													id_article,#ID_ARTICLE,			
+													titre,#TITRE,
+													url_article,#URL_ARTICLE,
+													time_difference,#GET{time_difference},
+													id_trad,#ID_TRAD,
+													id_pays,#PAYS,
+													lang,#GET{lang}
+													}}}}	
+								#SET{langues,#GET{langues}|array_merge{#ARRAY{#LANG,#LANG}}}
+							]
+						[(#ENV{trier_par}|=={lang}|non)
+							<INCLURE{fond=inclure/articles_wiki_details#GET{affichage},id_article,url_article,titre,time_difference=#GET{time_difference},env,id_trad=#GET{id_trad2},lang=#GET{lang},id_pays=#PAYS,compteur_boucle=#GET{compteur_boucle},total_boucle=#GET{total_boucle},date}/>
+						]
+					</BOUCLE_trads_autres_langues>				
+				<//B_non_trad>	
+				<//B_lang_orig>	
+			<//B_lang>	
+		<BOUCLE_exception(ARTICLES){id_article} {si #ENV{trier_par}|=={note}|oui}>
+			#SET{compteur,(#GET{compteur}|plus{1})}	
+			#SET{id_trad,#GET{id_trad}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_TRAD}}}	
+			#SET{time_difference,(#GET{date_today}|strtotime|moins{#DATE|strtotime}|div{86400}|round)}	
+			[(#LANG|=={#ENV{lang}}|?{#SET{lang,''},#SET{lang,#LANG}})]
+			[(#ENV{trier_par}|=={lang}|oui)
+				[(#LANG|in_array{#GET{langues}}|non)
+					#SET{#LANG,#ARRAY}
+					]
+				#SET{#LANG,#GET{#LANG}|array_merge{
+							#ARRAY{
+								#COMPTEUR_BOUCLE,#ARRAY{
+										id_article,#ID_ARTICLE,			
+										titre,#TITRE,
+										url_article,#URL_ARTICLE,
+										time_difference,#GET{time_difference},
+										id_trad,#ID_TRAD,
+										id_pays,#PAYS,
+										lang,#GET{lang}
+										}}}}	
+					#SET{langues,#GET{langues}|array_merge{#ARRAY{#LANG,#LANG}}}
+				]
+			[(#ENV{trier_par}|=={lang}|non)
+				<INCLURE{fond=inclure/articles_wiki_details#GET{affichage},id_article,url_article,titre,time_difference=#GET{time_difference},env,lang=#GET{lang},id_pays=#PAYS,id_trad=#GET{id_trad2},compteur_boucle=#GET{compteur_boucle},total_boucle=#GET{total_boucle},date}/>
+				]
+		</BOUCLE_exception>				
+					
+	</BOUCLE_wiki>
+		#SET{merge_langues,#ARRAY}
+		#SET{langues2,#ARRAY}
+
+		<BOUCLE_afficher(POUR){tableau #GET{langues}}{par cle}>
+			#SET{merge_langues,#GET{merge_langues}|array_merge{#ARRAY{#CLE,#GET{#VALEUR}}}
+		</BOUCLE_afficher>
+
+		<BOUCLE_afficher_i(DATA){source tableau, #GET{langues2}}>
+			#SET{merge_langues,#GET{merge_langues}|array_merge{#ARRAY{#CLE,#GET{#VALEUR}}}
+		</BOUCLE_afficher_i>
+			
+			
+		<BOUCLE_afficher_liste(DATA){source tableau,#GET{merge_langues}}{par /1}{inverse #ENV{senstri,0}}>
+			<BOUCLE_afficher_liste2(DATA){source tableau,#VALEUR}>			<INCLURE{fond=inclure/articles_wiki_details#GET{affichage},id_article=#VALEUR{id_article},url_article=#VALEUR{ur_article},titre=#VALEUR{titre},time_difference=#VALEUR{time_difference},id_trad=#ID_TRAD,env,afficher_lang=#VALEUR{afficher_lang},id_pays=#VALEUR{id_pays},lang_sel=oui,compteur_boucle=#GET{compteur_boucle},total_boucle=#GET{total_boucle},date}/>
+			</BOUCLE_afficher_liste2>
+			</B_afficher_liste2>		
+		</BOUCLE_afficher_liste>
+		</tbody>	
+	</table>
+	[(#GET{compteur}|=={0}|oui)<p class="erreur"><:no_result:></p>]
+</div>
+</B_wiki>
+
+
+
+
+
+
+
+

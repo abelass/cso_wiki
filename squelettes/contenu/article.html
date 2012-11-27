@@ -1,7 +1,7 @@
 #SET{rubriques_wiki,(#CONFIG{wiki_cso/rubriques_wiki}|picker_selected{rubrique})}
 #SET{rubriques_ressources_wiki,(#CONFIG{wiki_cso/rubriques_ressources_wiki}|picker_selected{rubrique})}
 <BOUCLE_content(ARTICLES){id_article}>
-<div class="content-principal article" id="article_top">
+<div class="contenu-principal article id_#ID_TRAD" id="article_top">
 	<div class="cartouche header">
 		#SET{ip,#EVAL{$GLOBALS['ip']}}
 		[(#ENV{edition}|=={new}|non)
@@ -18,11 +18,13 @@
 	</div>
 	[(#ENV{edition}|non)
 		[(#REM) Boite &agrave; outils]
-	[(#INCLURE{fond=inclure/outils,env,titre,introduction=#INTRODUCTION,url=#URL_ARTICLE})]
+	[(#ID_RUBRIQUE|in_array{#GET{rubriques_wiki}}|non)	
+	   [(#INCLURE{fond=inclure/outils,env,titre,introduction=#INTRODUCTION,url=#URL_ARTICLE})]
+	   ]
 	[<div class="#EDIT{chapo} chapo surlignable">(#CHAPO|image_reduire{500,0})</div>]
 	[<div class="#EDIT{texte} texte surlignable">(#TEXTE|image_reduire{500,0})</div>]
     [(#ID_RUBRIQUE|in_array{#GET{rubriques_wiki}}|oui)
-    <INCLURE{fond=inclure/champs_extras,id_rubrique,id_article,titre,liste=#LISTE{extra_1,extra_2,extra_3,extra_4,extra_5,extra_6,extra_7,extra_8,extra_9,extra_10,extra_11}}/>
+    <INCLURE{fond=inclure/champs_extras,id_rubrique,id_article,titre,liste=#LISTE{extra_1,extra_2,extra_3,extra_4,extra_5,extra_6,extra_7,extra_8,extra_9,extra_10,extra_11},titre=<:learn_more:>}/>
     ]
 	[<div class="#EDIT{hyperlien} hyperlien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></div>]
 	[<div class="#EDIT{ps} ps surlignable"><h2><:info_ps:></h2>(#PS|image_reduire{500,0})</div>]
@@ -35,6 +37,10 @@
 		[<div class="notes"><h2><:info_notes:></h2>(#NOTES)</div]
 ]
 </div>
+    [(#ID_RUBRIQUE|in_array{#GET{rubriques_wiki}}|oui)
+<div class="right">
+    <INCLURE{fond=inclure/principle_tiles,width=71,id_rubrique}/>
+</div>]
 
 [(#REM) Petition :
 La petition ayant une PAGINATION il faut absolument {env}
@@ -53,7 +59,9 @@ NB : pour desactiver les forums de l'article, supprimez simplement la ligne ci-d
 #SET{rubriques_wiki,(#CONFIG{wiki_cso/rubriques_wiki}|picker_selected{rubrique})}
 
 [(#REM) Displays the wiki page]
-[(#ID_RUBRIQUE|in_array{#GET{rubriques_wiki}}|oui|et{#ENV{edition}|non})<INCLURE{fond=inclure/articles_lies_wiki,env,ajax,id_trad=#ID_TRAD}/>]
+[(#ID_RUBRIQUE|in_array{#GET{rubriques_wiki}}|oui|et{#ENV{edition}|non})
+    <INCLURE{fond=inclure/articles_lies_wiki,env,ajax,id_trad=#ID_TRAD}/>
+    ]
 
 
 [(#REM)Le formulaire d'&eacute;dition]
