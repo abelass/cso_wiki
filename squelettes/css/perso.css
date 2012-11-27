@@ -125,6 +125,7 @@ body{
 .add_ressource  .liste-items{
 	display:none;
 	margin:0;
+	font-size: 110%;
 	}
 
 .add_ressource:hover .liste-items{
@@ -134,30 +135,10 @@ body{
 	position:absolute;
 	top:2em;
 	left:0px;
-	z-index: 100;
+	z-index: 200;
 	}
 .add_ressource .liste-items li{position:relative;}	
 
-
-#nav div.formulaire_recherche{
-    background: none repeat scroll 0 0 transparent;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    right: 0;
-    top: 4em;
-    width: 24%;
-    z-index: 200;
-    float:none
-	}
-	
-
-
-.rubrique_home .formulaire_recherche{
-	width: 34%;
-	}
-	
-.formulaire_recherche label{display:none}
 
 /*The pronciples colors*/
 
@@ -317,7 +298,7 @@ em {font-style: normal;text-transform:uppercase}
 	}
 
 
-.separateur{
+.item .wiki .separateur{
 	background: none repeat scroll 0 0 #A7A6A6;
     height: 500px;
     position: absolute;
@@ -377,7 +358,23 @@ div.rating-cancel a, div.star-rating a {
 
 /*Forms*/
 
-.formulaire_recherche input.submit{display:none}
+#nav div.formulaire_recherche{
+    background: none repeat scroll 0 0 transparent;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 4em;
+    width: 24%;
+    z-index: 100;
+    float:none
+	}
+	
+
+.rubrique_home .formulaire_recherche{width: 34%;}
+	
+
+.formulaire_recherche input.submit,.formulaire_recherche label{display:none}
 
 .formulaire_spip input.text {
     border: 2px solid #CCCBCB;
