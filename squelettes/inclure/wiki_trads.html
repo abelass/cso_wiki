@@ -1,8 +1,0 @@
-#SET{date_today,#DATE}
-<BOUCLE_traductions(ARTICLES){id_trad}{id_trad!=0}{exclus}{par lang}>
-		#SET{time_difference,(#GET{date_today}|strtotime|moins{#DATE|strtotime}|div{86400}|round)}
-	<span><a href="#URL_ARTICLE" title="[(#LANG|traduire_nom_langue)]">[#LANG]</a>
-	[(#REM)seactivé[(#GET{time_difference}|<{90}|oui)<small> <:new:></small>]] </span>
-</BOUCLE_traductions>
-<span><a href="#URL_ARTICLE" title="[(#LANG|traduire_nom_langue)]">[#LANG]</a>
-<//B_traductions>
