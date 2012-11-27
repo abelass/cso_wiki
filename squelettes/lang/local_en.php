@@ -24,8 +24,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'docs_rel'=>'Related Info',
 	
 	
-	//K
+	//L
 	'lang'=>'Language',
+	'learn_more'=>'Learn More',	
 	
 	//M
 	'modify_contribution'=>'Edit this contribution',

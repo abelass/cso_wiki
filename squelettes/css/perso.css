@@ -11,6 +11,18 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	clear:both;
 }
 
+h1, .h1 {
+    color: #FFFFFF;
+    font-size: 1.2em;
+    border-bottom-color: #FFFFFF;
+    line-height:normal;
+    padding-bottom: 0.5em;
+}
+
+.page_article h1, .page_article  .h1{font-size:1.7em;padding-bottom: 0.15em;}
+
+.page_article h2, .page_article  .h2{font-size:1.3em;padding-top: 1em;margin-bottom:1em}
+
 h4,.h4{
 	color: #7b7979; 
 	margin-top:0.9em;
@@ -31,7 +43,7 @@ body{
 	width:960px;
 	border:none;
 	box-shadow: none;
-	line-height: 130%;}
+}
 
 
 #entete {
@@ -44,16 +56,16 @@ body{
 	}
 
 #contenu{padding:0}
+
+#contenu{
+  padding-left: 5.2%;
+    width: 94.8%;
+}
+
 .rubrique_home #contenu{
     padding:0;
     width: 30%;
     margin-right:5%;
-	}
-
-.rubrique_wiki #contenu{
-	padding-left: 5.9%;
-    width: 94.1%;
-
 	}
 
 .rubrique_home #navigation{width:65%}
@@ -88,11 +100,11 @@ body{
 #nav div{
 	float:left;
 	height:35px; 
-	font-size:1em;
+	font-size:0.9em;
 	text-transform: uppercase;
 	height:36px;
 	padding: 0 0 0 0.5%;
-	letter-spacing:0.1em;
+	letter-spacing:0.01em;
 	}
 
 #nav #formulaire_recherche div{ width: 100%;padding-left: 20px;}
@@ -109,11 +121,12 @@ body{
 	width:74%;
 	background-color: #a7a9ac;
 	padding:0 0 0 1%; }
+	
 .menu-liste {border-bottom: none;}
 
 #nav .menu-liste .menu-entree {margin: 0 0.5em 0 0;}
 
-.add_ressource{
+#nav .add_ressource{
 	margin:-1px 0 0 1%;
 	width: 24%;
 	background-color: #a7a9ac;
@@ -121,11 +134,10 @@ body{
 	font-size:110%;
 	position:relative}
 
-.add_content{color:#FFFFFF; cursor: pointer;}
+.add_content{color:#FFFFFF; cursor: pointer;font-size: 110%;}
 .add_ressource  .liste-items{
 	display:none;
 	margin:0;
-	font-size: 110%;
 	}
 
 .add_ressource:hover .liste-items{
@@ -160,47 +172,64 @@ body{
 
 /*general*/
 
-.right{margin-top:4em}
 
 em {font-style: normal;text-transform:uppercase}
 
 /*contenu*/
 
-.chapo{position:relative}
-
-.contenu-principal{margin-top:5em; position:reative;}
+.chapo,.texte{position:relative}
 
 
+.texte {
+    line-height: normal;
+}
 
-.rubrique_wiki .contenu-principal{
+.contenu-principal{
 	padding-top:1em;
 	margin: 0 0 2em;
 	background-color: #a7a9ac;
 	color: #FFFFFF;
-	width:42%;
+	width:37%;
 	float:left
 	}
 
-.rubrique_wiki h1, .rubrique_wiki .h1 {
-    color: #FFFFFF;
-    font-size: 1.2em;
-    border-bottom-color: #FFFFFF;
-    line-height:normal;
-    padding-bottom: 0.5em;
-}
-
-.rubrique_wiki .cartouche,.rubrique_wiki .chapo{padding:0 0.5em}
-
-.rubrique_wiki .right{width:53%;}
-
-.rubrique_wiki .tiles{padding-left:6%}
 
 
+
+
+.cartouche, .chapo, .texte, dl{padding:0 0.65em}
+
+.page_article .soustitre{font-weight:bold;text-transform:uppercase;font-size:1.2em}
+
+
+.right{margin-top:4em}
+
+.page_article .right{margin-top:2.5em}
+
+.left,.right{float:left}
+
+.right{width:58%;}
+
+.tiles{
+	background:#FFFFFF; 
+	overflow: hidden;
+	padding-top:1em; 
+	width: 100%;}
+
+.tiles img {margin: 0.8em 0.4em;}
+
+.tiles{padding-left:6%}
+
+.page_article .tiles{width:70%; padding-top:0}
+
+.page_article .tiles img {margin: 0 0.2em 0.2em 0.2em;}
+
+.faq{background-color: #FFFFFF; color: #7b7979;margin:0}
 
 /*home*/
 
+/*rubrique_home .contenu-principal{margin-top:5em; position:reative;}*/
 
-.left,.right{float:left}
 
 .rubrique_home .left{
 	width:46%;
@@ -211,6 +240,7 @@ em {font-style: normal;text-transform:uppercase}
 	padding:1.4em 0 0 8%
 }
 
+.rubrique_home .tiles{padding-left:0}
 .rubrique_home .contenu-principal p {margin-right:2em;}
 
 .arrow{height: 10px;width:14px;position:absolute;right:0;}
@@ -224,9 +254,7 @@ em {font-style: normal;text-transform:uppercase}
 	bottom:0;
 	}	
 
-.tiles{background:#FFFFFF; overflow: hidden;padding-top:1em; width: 100%;}
 
-.tiles img {margin: 0.8em 0.4em;}
 
 
 /*lists*/
@@ -270,23 +298,23 @@ em {font-style: normal;text-transform:uppercase}
 	padding:0.5em
 	}
 	
-.id_1 .soustitre{background-color:#ed1c24}
+.id_1 .soustitre, .page_article .id_1 {background-color:#ed1c24}
 
-.id_248 .soustitre{background-color:#8d188f}
+.id_248 .soustitre, .page_article .id_248 {background-color:#8d188f}
 
-.id_250 .soustitre{background-color:#2e3192}
+.id_250 .soustitre, .page_article .id_250 {background-color:#2e3192}
 
-.id_251 .soustitre{background-color:#00a650}
+.id_251 .soustitre, .page_article .id_251{background-color:#00a650}
 
-.id_252 .soustitre{background-color:#fedd0f}
+.id_252 .soustitre, .page_article .id_252 {background-color:#fedd0f}
 
-.id_253 .soustitre{background-color:#00adef}
+.id_253 .soustitre, .page_article .id_253 {background-color:#00adef}
 
-.id_254 .soustitre{background-color:#855232}
+.id_254 .soustitre, .page_article .id_254 {background-color:#855232}
 
-.id_255 .soustitre{background-color:#f68712}	
+.id_255 .soustitre, .page_article .id_255 {background-color:#f68712}	
 	
-.item .introduction{float:left; width: 25%;}
+.item .introduction {float:left; width: 25%;}
 
 .item .wiki {width:75%; float:left;position:relative;z-index:200}
 
@@ -401,10 +429,6 @@ div.rating-cancel a, div.star-rating a {
 	background-color:#E5E5E5}*/
 	
 
-dt {
-	font-weight: bold;
-}
-
 /*faq*/
 
 .faq dt, .aide{cursor: pointer;}
@@ -416,6 +440,12 @@ dt {
 
 .faq dt.close span.closed{display:inline;}
 .faq dt.close span.open{display:none;}
+
+.faq dt span{font-weight:bold}
+
+.row_1 span{color:#8bd024}
+.row_2 span{color:#ed0d66}
+.row_0 span{color:#446271}
 
 .aide span.help{display:none;}
 .aide:hover span.help{
