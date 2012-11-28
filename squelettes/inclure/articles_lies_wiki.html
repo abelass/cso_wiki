@@ -106,8 +106,9 @@
         <thead>
             <tr   valign="top">
              <td class="title">
+                 #SET{senstrititre,1}
                  [(#ENV{trier_par}|non|ou{#ENV{trier_par}|=={titre}|oui})
-                  #SET{senstrititre,1}
+                  
                     [(#ENV{senstri}|=={1}|?{#SET{senstrititre,0},#SET{senstrititre,1}})]
                  ] 
                   <a class="ajax[ (#ENV{trier_par}|non|ou{#ENV{trier_par}|=={titre}|oui})on]" href="[(#SELF|parametre_url{trier_par,titre}|parametre_url{senstri,#GET{senstrititre}})]" title="<:titre:>"><:titre:>
