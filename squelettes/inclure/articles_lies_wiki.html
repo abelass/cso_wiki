@@ -1,72 +1,67 @@
 
+[(#REM) Définir le sens du tri]
 
-[(#REM) D&eacute;finir le sens du tri]
+[(#REM) par défaut type de liaison pour le premier trie]
 
-[(#REM) par d&eacute;faut]
-	#SET{trier,type_liaison}
+#SET{trier,type_liaison}
 
 [(#REM) pour le trie par type]
 	
 #SET{senstri,#ENV{senstri,1}}
 	
 
-[(#REM)On fait un tableau des tous les articles li&eacute;s]
+[(#REM)On fait un tableau des toutes les traductions de l'article de base]
 
 #SET{id_articles,#ARRAY}
-<BOUCLE_arts(ARTICLES){id_trad}{id_trad!=0}>
-	#SET{id_articles,#GET{id_articles}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_ARTICLE}}}
+<BOUCLE_arts(ARTICLES){id_trad}{id_trad!=0}>1
+    #SET{id_articles,#GET{id_articles}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_ARTICLE}}}
 </BOUCLE_arts>
-	#SET{id_articles,#GET{id_articles}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_ARTICLE}}}	
-<//B_arts>	
+    #SET{id_articles,#GET{id_articles}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_ARTICLE}}}   
+<//B_arts>  
+
+
+[(#REM) On établit la listes des articles liés aux traductions de l'article de base]
 
 #SET{articles_tous,#ARRAY}	
 #SET{date_today,#DATE}		
 #SET{types_wiki,#ARRAY}
-<BOUCLE_types_liaisons(DATA){source tableau, #TYPES_LIAISONS}>
-	#SET{types_wiki,#GET{types_wiki}|array_merge{#ARRAY{#CLE,#VALEUR|_T}}}
-	<BOUCLE_articles_lies(ARTICLES_LIES){id_article IN #GET{id_articles}}{par #GET{trier}}{inverse #GET{senstri}}{type_liaison=#ENV{type_liaison,#CLE}}>
-		#SET{articles_tous,#GET{articles_tous}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_ARTICLE_LIE}}}
-	</BOUCLE_articles_lies>
-</BOUCLE_types_liaisons>
 
 
-[(#REM)Pr&eacute;paration R&eacute;cuperation de donn&eacute;es]
+<BOUCLE_articles_lies(ARTICLES_LIES){id_article IN #GET{id_articles}}{par #GET{trier}}{inverse #GET{senstri}}>
+	#SET{articles_tous,#GET{articles_tous}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_ARTICLE_LIE}}}
+</BOUCLE_articles_lies>
+
+
+
+[(#REM)Préparation Récuperation des données]
 
     #SET{rubriques_wiki,(#CONFIG{wiki_cso/rubriques_ressources_wiki}|picker_selected{rubrique})}
-    #SET{languages,#ARRAY}
+
     #SET{articles,#GET{articles_tous}}
-    #SET{pays,#ARRAY}
+
     #SET{dates,#ARRAY}
 
 [(#REM)On remet le compteur &agrave; 0]
     #SET{articles_tous,#ARRAY}
 
 
-[(#REM) D&eacute;finir le sens du tri]
+[(#REM) D&eacute;finir le sens du tri par défaut pour le boucles articles]
 
 [(#REM) par d&eacute;faut]
-    #SET{trier,date}
-    #SET{senstri,#ENV{senstri,1}}
-    [(#ENV{trier_par}|in_array{#LISTE{date}}|oui)
-    	#SET{trier,#ENV{trier_par}}
-    	#SET{senstri,#ENV{senstri,1}}
-    ]
+    #SET{trier,titre}
+    #SET{senstri,#ENV{senstri,0}}
 
 
 <BOUCLE_recherche_trad(ARTICLES){id_rubrique IN #GET{rubriques_wiki}} {id_article IN #GET{articles}} {par #GET{trier}} {inverse #GET{senstri}}>
-	[(#ENV{recherche}|non|et{#ENV{trier_par}|=={moyenne}|non}|ou{#ENV{trier_par}|=={lang}|non})
-		#SET{articles_tous,#GET{articles_tous}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_ARTICLE}}}
-		]
-	<BOUCLE_art(ARTICLES){id_article}>
-		<BOUCLE_trads(ARTICLES){traduction} {par #GET{trier}} {inverse #GET{senstri}}>
-			[(#ENV{recherche}|oui|ou{#ENV{trier_par}|=={moyenne}|oui}|ou{#ENV{trier_par}|=={lang}|oui})
+
+    #SET{articles_tous,#GET{articles_tous}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_ARTICLE}}}
+
+
+		<BOUCLE_trads(ARTICLES){traduction} >
 			#SET{articles_tous,#GET{articles_tous}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_ARTICLE}}}
-			]
-			#SET{languages,#GET{languages}|array_merge{#ARRAY{#LANG,#LANG|traduire_nom_langue}}}
-			#SET{dates,#GET{dates}|array_merge{#ARRAY{#DATE|affdate{Y-m-d},#DATE|affdate{d-m-Y}}}}
-			#SET{pays,#GET{pays}|array_merge{#ARRAY{(#PAYS|name_country),#PAYS}}}	
+
 		</BOUCLE_trads>
-	</BOUCLE_art>
+
 </BOUCLE_recherche_trad>
 
 
@@ -78,10 +73,6 @@
     [(#SET{trie_reel,#ENV{trier_par,#GET{trier}}})]
     [(#SET{sens_trie_reel,#ENV{senstrie,#GET{senstri}}})]
 
-
-[(#ENV{pays}|ou{#ENV{type_liaison}}|ou{#ENV{lang_sel}}|ou{#ENV{periode}})
-	#SET{recherche_avance,oui}
-	]
 
 
 [(#ENV{trier_par}|!={lang}|oui)
@@ -99,9 +90,7 @@
 
 
 
-[(#ENV{trier_par}|=={lang}|oui)
-    #SET{langues,#ARRAY}
-    ]
+
 [(#ENV{affichage}|oui)#SET{affichage,_#ENV{affichage}}]
 <B_wiki>
 <div class="liste articles wiki"> 
@@ -110,30 +99,57 @@
     <h2><:contributions:></h2>
     <table class="liste-items">
         <thead>
-             <td class="title"><:title:></td>
              <td class="title">
-                 <a class="ajax" href="[(#SELF|parametre_url{trier_par,moyenne})]" title="<:note:>"><:moyenne:></a>
-                  [(#GET{senstri}|=={0}?{
-                <a class="ajax" href="[(#SELF|parametre_url{senstri,1})]" title="<:sense_trie_ascendant:>"><img src="[(#CHEMIN{prive/images/deplierbas.gif})]" alt="down"/> <:sense_trie_ascendant:></a>
-                ,
-                <a class="ajax" href="[(#SELF|parametre_url{senstri,0})]" title="<:sense_trie_descendant:>"><img src="[(#CHEMIN{prive/images/deplierhaut.gif})]" alt="up"/> <:sense_trie_descendant:></a>           
-                })]
+                 [(#ENV{trier_par}|non|ou{#ENV{trier_par}|=={titre}|oui})
+                 #SET{senstrititre,1}
+                    [(#ENV{senstri}|=={1}|?{#SET{senstrititre,0},#SET{senstrititre,1}})]
+                 ]
+                  <a class="ajax" href="[(#SELF|parametre_url{trier_par,titre}|parametre_url{senstri,#GET{senstrititre}})]" title="<:title:>"><:title:></a>
+                [(#ENV{trier_par}|non|ou{#ENV{trier_par}|=={titre}|oui})
+                <div>
+                 [(#ENV{senstri}|=={0}|oui|ou{#ENV{trier_par}|non})<img src="[(#CHEMIN{css/img/filter-arrow-down.png})]" alt="down"/>]
+                 [(#ENV{senstri}||=={1}|oui)<img src="[(#CHEMIN{css/img/filter-arrow-up.png})]" alt="up"/>]
+                 </div>  
+                ]
                  </td>
-             <td class="title">
-                 <a class="ajax" href="[(#SELF|parametre_url{trier_par,type_liaison})]" title="<:type_liaison:>"><:type_liaison:></a>
-                 [(#GET{senstri}|=={0}?{
-                <a class="ajax" href="[(#SELF|parametre_url{senstri,1})]" title="<:sense_trie_ascendant:>"><img src="[(#CHEMIN{prive/images/deplierbas.gif})]" alt="down"/> <:sense_trie_ascendant:></a>
-                ,
-                <a class="ajax" href="[(#SELF|parametre_url{senstri,0})]" title="<:sense_trie_descendant:>"><img src="[(#CHEMIN{prive/images/deplierhaut.gif})]" alt="up"/> <:sense_trie_descendant:></a>           
-                })]
+             <td class="note">
+              #SET{senstrimoyenne,0}   
+              [(#ENV{trier_par}|=={moyenne}|oui)
+                    [(#ENV{senstri}|=={1}|?{#SET{senstrimoyenne,0},#SET{senstrimoyenne,1}})]
+                 ]
+                 <a class="ajax" href="[(#SELF|parametre_url{trier_par,moyenne}|parametre_url{senstri,#GET{senstrimoyenne}})]" title="<:note:>"><:moyenne:></a>
+                [(#ENV{trier_par}|=={moyenne}|oui)
+                <div>
+                  [(#ENV{senstri}|=={0}|oui|ou{#ENV{trier_par}|non})<img src="[(#CHEMIN{css/img/filter-arrow-down.png})]" alt="down"/>]
+                  [(#ENV{senstri}||=={1}|oui)<img src="[(#CHEMIN{css/img/filter-arrow-up.png})]" alt="up"/>]
+                 </div>  
+                ]
+                 </td>
+             <td class="type_liaison">
+              #SET{senstritypeliaison,0}   
+              [(#ENV{trier_par}|=={type_liaison}|oui)
+                    [(#ENV{senstri}|=={1}|?{#SET{senstritypeliaison,0},#SET{senstritypeliaison,1}})]
+                 ]
+                 <a class="ajax" href="[(#SELF|parametre_url{trier_par,type_liaison}|parametre_url{senstri,#GET{senstritypeliaison}})]" title="<:type_liaison:>"><:type_liaison:></a>
+               [(#ENV{trier_par}|=={type_liaison}|oui)
+                <div>
+                  [(#ENV{senstri}|=={0}|oui|ou{#ENV{trier_par}|non})<img src="[(#CHEMIN{css/img/filter-arrow-down.png})]" alt="down"/>]
+                  [(#ENV{senstri}||=={1}|oui)<img src="[(#CHEMIN{css/img/filter-arrow-up.png})]" alt="up"/>]
+                 </div>  
+                ]
              </td>
-             <td class="title">
-                <a class="ajax" href="[(#SELF|parametre_url{trier_par,lang})]" title="<:language:>"><:lang:></a>
-                                 [(#GET{senstri}|=={0}?{
-                <a class="ajax" href="[(#SELF|parametre_url{senstri,1})]" title="<:sense_trie_ascendant:>"><img src="[(#CHEMIN{prive/images/deplierbas.gif})]" alt="down"/> <:sense_trie_ascendant:></a>
-                ,
-                <a class="ajax" href="[(#SELF|parametre_url{senstri,0})]" title="<:sense_trie_descendant:>"><img src="[(#CHEMIN{prive/images/deplierhaut.gif})]" alt="up"/> <:sense_trie_descendant:></a>           
-                })]
+             <td class="language">
+              #SET{senstrilang,0}   
+              [(#ENV{trier_par}|=={lang}|oui)
+                    [(#ENV{senstri}|=={1}|?{#SET{senstrilang,0},#SET{senstrilang,1}})]
+                 ]
+                <a class="ajax" href="[(#SELF|parametre_url{trier_par,lang}|parametre_url{senstri,#GET{senstrilang}})]" title="<:language:>"><:lang:></a>
+                [(#ENV{trier_par}|=={lang}|oui)
+                <div>
+                  [(#ENV{senstri}|=={0}|oui|ou{#ENV{trier_par}|non})<img src="[(#CHEMIN{css/img/filter-arrow-down.png})]" alt="down"/>]
+                  [(#ENV{senstri}||=={1}|oui)<img src="[(#CHEMIN{css/img/filter-arrow-up.png})]" alt="up"/>]
+                 </div>  
+                ]
             </td>                        
         </thead>
         <tbody>
