@@ -1,4 +1,4 @@
-<tr class="item hentry">
+<tr class="item hentry[ (#ENV{class})]"  valign="top">
     <td class="title">
        <a href="#URL_ARTICLE" rel="bookmark">#TITRE [&#91;(#AFFICHER_LANG)&#93;] </a> 
     </td>
@@ -6,10 +6,10 @@
         <BOUCLE_notations(ARTICLES){id_article}>#FORMULAIRE_NOTATION</BOUCLE_notations>
     </td>
 	<td>
-	<BOUCLE_art_lies(ARTICLES_LIES){id_article_lie=#ID_TRAD}{si #ID_TRAD|!={0}|oui}>
+	<BOUCLE_art_lies(ARTICLES_LIES){id_article_lie=#ID_TRAD}{si #ID_TRAD|!={0}|oui}{0,1}>
 		<span class="type">[(#TYPE_LIAISON|_T)]
 	</BOUCLE_art_lies>
-	   <BOUCLE_art_lies_or(ARTICLES_LIES){id_article_lie=#ID_ARTICLE}>
+	   <BOUCLE_art_lies_or(ARTICLES_LIES){id_article_lie=#ID_ARTICLE}{0,1}>
         <span class="type">[(#TYPE_LIAISON|_T)]
     </BOUCLE_art_lies_or>
 	<//B_art_lies>  	

@@ -29,12 +29,12 @@
 </B_art_lie>
 
 
-
+[(#ENV{composition}|=={ressource}|oui)
 [(#AUTORISER{modifier,article,#ID_ARTICLE}|oui|ou{#ENV{cookie_art}|oui})
 	[(#ENV{edition}|non)<a class="ajax modify open" href="[(#SELF|parametre_url{edition,mod})]" title="<:modify_contribution:>" rel="nofollow"><:modify_contribution:></a>]
 	[(#ENV{edition}|oui)<a class="ajax modify close"  href="[(#SELF|parametre_url{edition,''})]" title="<:modify_contribution_close:>"  rel="nofollow"><:modify_contribution_close:></a>]
 ]
-
+]
 
 #SET{rubriques_wiki,(#CONFIG{wiki_cso/rubriques_wiki}|picker_selected{rubrique})}
 
@@ -42,7 +42,9 @@
 #SET{no_shortcuts,#LISTE{home,wiki}}
 
 [(#ENV{composition}|in_array{#GET{no_shortcuts}}|non)
+       [(#REM)
     <INCLURE{fond=inclure/shortcuts}/>
+    ]
 ]
 
 <B_docs>

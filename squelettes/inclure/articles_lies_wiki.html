@@ -1,4 +1,3 @@
-
 [(#REM) Définir le sens du tri]
 
 [(#REM) par défaut type de liaison pour le premier trie]
@@ -13,7 +12,7 @@
 [(#REM)On fait un tableau des toutes les traductions de l'article de base]
 
 #SET{id_articles,#ARRAY}
-<BOUCLE_arts(ARTICLES){id_trad}{id_trad!=0}>1
+<BOUCLE_arts(ARTICLES){id_trad}{id_trad!=0}>
     #SET{id_articles,#GET{id_articles}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_ARTICLE}}}
 </BOUCLE_arts>
     #SET{id_articles,#GET{id_articles}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_ARTICLE}}}   
@@ -80,9 +79,6 @@
 </BOUCLE_lang>
 
 
-
-
-
 [(#REM) D&eacute;tecter les sens du tri r&eacute;el sens du tri]
 
     [(#ENV{trier_par}|in_array{#LISTE{lang}}|oui)
@@ -104,85 +100,69 @@
 
 <B_wiki>
 <div class="liste articles wiki"> 
-   
-    [<p class="pagination">(#PAGINATION)</p>]
+  
     <h2><:contributions:></h2>
     <table class="liste-items">
         <thead>
+            <tr   valign="top">
              <td class="title">
                  [(#ENV{trier_par}|non|ou{#ENV{trier_par}|=={titre}|oui})
                   #SET{senstrititre,1}
                     [(#ENV{senstri}|=={1}|?{#SET{senstrititre,0},#SET{senstrititre,1}})]
-                 ]
-                  <a class="ajax" href="[(#SELF|parametre_url{trier_par,titre}|parametre_url{senstri,#GET{senstrititre}})]" title="<:title:>"><:title:></a>
+                 ] 
+                  <a class="ajax[ (#ENV{trier_par}|non|ou{#ENV{trier_par}|=={titre}|oui})on]" href="[(#SELF|parametre_url{trier_par,titre}|parametre_url{senstri,#GET{senstrititre}})]" title="<:titre:>"><:titre:>
                 [(#ENV{trier_par}|non|ou{#ENV{trier_par}|=={titre}|oui})
-                <div>
                  [(#ENV{senstri}|=={0}|oui|ou{#ENV{trier_par}|non})<img src="[(#CHEMIN{css/img/filter-arrow-down.png})]" alt="down"/>]
                  [(#ENV{senstri}||=={1}|oui)<img src="[(#CHEMIN{css/img/filter-arrow-up.png})]" alt="up"/>]
-                 </div>  
-                ]
+                 ]
+                </a>
                  </td>
              <td class="note">
               #SET{senstrimoyenne,1}   
               [(#ENV{trier_par}|=={moyenne}|oui)
+              
                     [(#ENV{senstri}|=={1}|?{#SET{senstrimoyenne,0},#SET{senstrimoyenne,1}})]
                  ]
-                 <a class="ajax" href="[(#SELF|parametre_url{trier_par,moyenne}|parametre_url{senstri,#GET{senstrimoyenne}})]" title="<:note:>"><:moyenne:></a>
+                 <a class="ajax[ (#ENV{trier_par}|=={moyenne}|oui)on]" href="[(#SELF|parametre_url{trier_par,moyenne}|parametre_url{senstri,#GET{senstrimoyenne}})]" title="<:note:>"><:moyenne:>
                 [(#ENV{trier_par}|=={moyenne}|oui)
-                <div>
                   [(#ENV{senstri}|=={1}|oui|ou{#ENV{trier_par}|non})<img src="[(#CHEMIN{css/img/filter-arrow-down.png})]" alt="down"/>]
                   [(#ENV{senstri}||=={0}|oui)<img src="[(#CHEMIN{css/img/filter-arrow-up.png})]" alt="up"/>]
-                 </div>  
+ 
                 ]
+                </a>
                  </td>
              <td class="type_liaison">
               #SET{senstritypeliaison,0}   
               [(#ENV{trier_par}|=={type_liaison}|oui)
                     [(#ENV{senstri}|=={1}|?{#SET{senstritypeliaison,0},#SET{senstritypeliaison,1}})]
                  ]
-                 <a class="ajax" href="[(#SELF|parametre_url{trier_par,type_liaison}|parametre_url{senstri,#GET{senstritypeliaison}})]" title="<:type_liaison:>"><:type_liaison:></a>
+                 <a class="ajax[ (#ENV{trier_par}|=={type_liaison}|oui)on]" href="[(#SELF|parametre_url{trier_par,type_liaison}|parametre_url{senstri,#GET{senstritypeliaison}})]" title="<:type_liaison:>"><:type_liaison:>
                [(#ENV{trier_par}|=={type_liaison}|oui)
-                <div>
                   [(#ENV{senstri}|=={0}|oui|ou{#ENV{trier_par}|non})<img src="[(#CHEMIN{css/img/filter-arrow-down.png})]" alt="down"/>]
                   [(#ENV{senstri}||=={1}|oui)<img src="[(#CHEMIN{css/img/filter-arrow-up.png})]" alt="up"/>]
-                 </div>  
                 ]
+                </a>
              </td>
              <td class="language">
               #SET{senstrilang,0}   
               [(#ENV{trier_par}|=={lang}|oui)
                     [(#ENV{senstri}|=={1}|?{#SET{senstrilang,0},#SET{senstrilang,1}})]
                  ]
-                <a class="ajax" href="[(#SELF|parametre_url{trier_par,lang}|parametre_url{senstri,#GET{senstrilang}})]" title="<:language:>"><:lang:></a>
+                <a class="ajax[ (#ENV{trier_par}|=={lang}|oui)on]" href="[(#SELF|parametre_url{trier_par,lang}|parametre_url{senstri,#GET{senstrilang}})]" title="<:language:>"><:lang:>
                 [(#ENV{trier_par}|=={lang}|oui)
-                <div>
                   [(#ENV{senstri}|=={0}|oui|ou{#ENV{trier_par}|non})<img src="[(#CHEMIN{css/img/filter-arrow-down.png})]" alt="down"/>]
                   [(#ENV{senstri}||=={1}|oui)<img src="[(#CHEMIN{css/img/filter-arrow-up.png})]" alt="up"/>]
-                 </div>  
                 ]
-            </td>                        
+                </a>
+            </td>   
+            </tr>                     
         </thead>
         <tbody>
-    <BOUCLE_wiki(ARTICLES){id_rubrique IN #GET{rubriques_wiki}} {id_article IN #GET{articles_tous}}{pagination 10}>
-    [(#SET{id_trad2,#ID_TRAD})]
-    #SET{compteur_boucle,#COMPTEUR_BOUCLE}
-    #SET{total_boucle,#TOTAL_BOUCLE}    
-            #SET{compteur,(#GET{compteur}|plus{1})}
-            #SET{id_trad,#GET{id_trad}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_TRAD}}}
-            
-            <INCLURE{fond=inclure/articles_wiki_details,env,id_article,url_article,titre,time_difference=#GET{time_difference},id_trad=#GET{id_trad2},id_pays=#PAYS,compteur_boucle=#GET{compteur_boucle},total_boucle=#GET{total_boucle},date,lang=#LANG}/>
+    <BOUCLE_wiki(ARTICLES){id_rubrique IN #GET{rubriques_wiki}} {id_article IN #GET{articles_tous}}{pagination 10}> 
+         <INCLURE{fond=inclure/articles_wiki_details,env,id_article,url_article,titre,lang=#LANG,class=#COMPTEUR_BOUCLE|alterner{odd,even},id_trad}/>
     </BOUCLE_wiki>
         </tbody>    
     </table>
-    [(#GET{compteur}|=={0}|oui)<p class="erreur"><:no_result:></p>]
+        [<p class="pagination">(#PAGINATION{page,label=<:page:>})</p>]
 </div>
 </B_wiki>
-
-
-
-
-
-
-
-
-

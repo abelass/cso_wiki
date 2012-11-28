@@ -152,7 +152,7 @@ body{
 .add_ressource .liste-items li{position:relative;}	
 
 
-/*The pronciples colors*/
+/*The principles colors*/
 
 .id_1 h3 a{color:#ed1c24}
 
@@ -172,6 +172,7 @@ body{
 
 /*general*/
 
+.on, .pagination .on {color:#ee1c7b}
 
 em {font-style: normal;text-transform:uppercase}
 
@@ -184,7 +185,7 @@ em {font-style: normal;text-transform:uppercase}
     line-height: normal;
 }
 
-.contenu-principal{
+.rubrique_wiki .contenu-principal, .page_article .contenu-principal{
 	padding-top:1em;
 	margin: 0 0 2em;
 	background-color: #a7a9ac;
@@ -192,10 +193,6 @@ em {font-style: normal;text-transform:uppercase}
 	width:37%;
 	float:left
 	}
-
-
-
-
 
 .cartouche, .chapo, .texte, dl{padding:0 0.65em}
 
@@ -225,6 +222,51 @@ em {font-style: normal;text-transform:uppercase}
 .page_article .tiles img {margin: 0 0.2em 0.2em 0.2em;}
 
 .faq{background-color: #FFFFFF; color: #7b7979;margin:0}
+
+/*tables*/
+
+thead td { 
+	padding: 1em 0;
+    text-align: center;
+    width:20%
+    }
+
+td.title {width:40%}
+
+thead td a{
+	background-color:#a7a6a6;
+	padding:0.25em 2em;
+	color:#FFFFFF;
+	position:relative;
+	margin-bottom:0.5em}
+
+td a:hover,thead td a:active{color:#ee1c7b;}
+
+thead td a.on{background-color:#5e5f61;}
+
+thead td a img{
+	margin-top:0.5em;
+	width:auto;
+	position:absolute;
+	left:0;
+	bottom:-0.6em}
+
+tbody tr {margin-bottom:0.5em}
+
+tbody td {
+	text-align:center;
+	padding:0.7em 0.1em 0.7em 1em;
+	margin-left:0.2em}
+
+tr.odd td{background-color:#cdccca}
+
+tr.even td{background-color:#f6f6f6}
+
+tbody td.title {text-align:left}
+
+tbody td.ranking{padding-left:3em}
+
+
 
 /*home*/
 
@@ -455,5 +497,5 @@ div.rating-cancel a, div.star-rating a {
 	padding:1em;top:0;
 	right:0;}
 
-a	{color:#838181;}
-a:hover, a:active{color:#686767;}
+a{color:#838181;}
+a:hover, a:active{color:#ee1c7b;}

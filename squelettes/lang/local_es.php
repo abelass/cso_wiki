@@ -43,6 +43,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	
 		
 	//P
+    'page'=>'Página', 	
 	'pays'=>'País',
 	
 	//R
@@ -56,6 +57,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'shortcuts'=>'Atajos',
 	
 	//T
+    'titre'=>'Título',   	
 	'tool'=>'Herramienta',
 	'type_liaison'=>'Typo'
 );
