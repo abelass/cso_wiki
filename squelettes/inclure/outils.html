@@ -1,11 +1,17 @@
-[(#IMPRIMER|non|et{#VAL{cacher_boite_outils}|a_cacher|non})<div id="outils"[ class="(#CLASSE)"]>
-	[<div class="item article_pdf">
-		(#ARTICLE_PDF{id_article})
-	</div>]
-	<div class="item imprimer">
-		<a href="javascript:;" onclick="centrarVentana('[(#URL_PAGE{imprimer_#TYPE}|parametre_url{id_rubrique,#ID_RUBRIQUE}|parametre_url{id_article,#ID_ARTICLE})]','Imprimir_documento','scrollbars=yes,resizable=yes','700','470','true')" title="<:imprimirdocumento:version_doc_imprimir:>" style="border:none">[(#CHEMIN{prive/themes/spip/images/imprimer.png}|image_reduire{24}|inserer_attribut{alt,print})] 
-		</a>
-	</div>	
+[(#IMPRIMER|non|et{#VAL{cacher_boite_outils}|a_cacher|non})
+<div id="outils"[ class="(#CLASSE)"]>
+    <div id="socialtags">
+        <a rel="nofollow" href="http://www.facebook.com/sharer/sharer.php?u=[(#SELF|entites_html)]&t=#TITRE" title="Facebook">
+            <img src="css/img/promote-facebook-grey.png" alt="facebook"/>
+           <a/>
+           <a rel="nofollow" href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fcso_wiki%2Fspip.php%3Fpage%3Darticle%26id_article%3D602&title=Applying%20a%20Rights-Based%20Approach%20es%20-%20Cso%20Wiki&source=http%3A%2F%2Fcso_wiki%2Fspip.php%3Fpage%3Darticle%26id_article%3D602_site&summary=%20The%20Danish%20Institute%20for%20Human%20Rights%20published%20%22Applying%20a%20Rights-Based%20Approach%2C%22%20(2007)%20an%20excellent%2045-page%20guide%20for%20civil%20society%20that%20(...)%20" title="LinkedIn">
+               <img src="css/img/promote-facebook-grey.png" alt="facebook"/>
+            </a>
+           <a rel="nofollow" href="http://twitter.com/share?text=Applying%20a%20Rights-Based%20Approach%20es%20-%20Cso%20Wiki&url=http%3A%2F%2Fcso_wiki%2Fspip.php%3Fpage%3Darticle%26id_article%3D602" title="Twitter">
+               <img src="css/img/promote-facebook-grey.png" alt="facebook"/>
+           </a>
+           
+    </div>
 	<div class="item recommander">
 		<a title="<:recommander:recommander:>"class="mediabox" href="[(#URL_PAGE{recommander}|parametre_url{id_article,#ID_ARTICLE}|parametre_url{id_rubrique,#ID_RUBRIQUE})]">
 			[(#CHEMIN{prive/themes/spip/images/mail.png}|image_reduire{25}|inserer_attribut{alt,recommend})]

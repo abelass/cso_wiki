@@ -1,4 +1,9 @@
 <BOUCLE_principale_rubrique(RUBRIQUES){id_rubrique}{id_rubrique!=2}{tout}>
+    
+    [(#REM)les rubriques wiki ne doi!vent pas être affichés]
+    [(#COMPOSITION|=={ressource}|oui)
+    <INCLURE{fond=structure}{env}{id_rubrique=#ID_PARENT}{id_secteur=#ID_SECTEUR}{type=rubrique}{composition=wiki} />
+    ]
     <INCLURE{fond=structure}{env}{id_secteur=#ID_SECTEUR}{type=rubrique}{composition=#COMPOSITION} />
 </BOUCLE_principale_rubrique>
     <BOUCLE_art(ARTICLES){id_trad=239}{lang}>

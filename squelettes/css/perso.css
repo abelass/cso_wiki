@@ -21,7 +21,17 @@ h1, .h1 {
 
 .page_article h1, .page_article  .h1{font-size:1.7em;padding-bottom: 0.15em;}
 
+
 .page_article h2, .page_article  .h2{font-size:1.3em;padding-top: 1em;margin-bottom:1em}
+
+.article_ressource h1, .article_ressource .h1{
+	color:#5e5b5b; 
+	font-style:italic;
+	border-bottom:none;
+	padding-bottom: 0;
+	font-size: 1.2em;
+	text-transform:capitalize;
+	}
 
 h4,.h4{
 	color: #7b7979; 
@@ -51,9 +61,7 @@ body{
 
 }
 
-#navigation{
-	margin-top:0
-	}
+.article_ressource #conteneur{padding-top:3em}
 
 #contenu{padding:0}
 
@@ -67,10 +75,20 @@ body{
     width: 30%;
     margin-right:5%;
 	}
+	
+.article_ressource #contenu{
+	width: 61.8%
+	}
 
 .rubrique_home #navigation{width:65%}
 
-
+#navigation{
+	margin-top:0
+	}
+	
+.article_ressource #navigation{
+	width: 33%;
+	float:left}
 
 #pied {
     background: #FFFFFF ;
@@ -185,6 +203,7 @@ em {font-style: normal;text-transform:uppercase}
     line-height: normal;
 }
 
+
 .rubrique_wiki .contenu-principal, .page_article .contenu-principal{
 	padding-top:1em;
 	margin: 0 0 2em;
@@ -193,6 +212,13 @@ em {font-style: normal;text-transform:uppercase}
 	width:37%;
 	float:left
 	}
+	
+.article_ressource  .contenu-principal{
+	width:100%;
+	background-color: #FFFFFF;
+	color: #7b7979;
+	 padding-top: 0;
+	}	
 
 .cartouche, .chapo, .texte, dl{padding:0 0.65em}
 
@@ -471,6 +497,30 @@ div.rating-cancel a, div.star-rating a {
 	background-color:#E5E5E5}*/
 	
 
+/*toolbox*/
+
+.article_ressource #outils {
+    background-color: transparent;
+    border: none;
+
+    margin: 5px;
+    opacity: 1;
+    padding: 5px;
+    position:relative;
+    width: 100px;
+}
+
+div.socialtags {
+    float: left;
+    clear:none ;
+    margin: 0;
+    padding: 5px 0;
+}
+
+.article_ressource  #outils div#recommander, #outils div.item {
+    float: right;
+}
+
 /*faq*/
 
 .faq dt, .aide{cursor: pointer;}
@@ -497,5 +547,6 @@ div.rating-cancel a, div.star-rating a {
 	padding:1em;top:0;
 	right:0;}
 
-a{color:#838181;}
+a {color:#838181;}
+a.spip_out, a.spip_glossaire {color:#ee1c7b;}
 a:hover, a:active{color:#ee1c7b;}

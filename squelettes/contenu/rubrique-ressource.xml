@@ -1,0 +1,5 @@
+<composition>
+	<nom>Rubrique Ressource</nom>
+	<description>Composition pour les rubriques Ressources</description>
+	<branche type="article" composition="ressource" />
+</composition>

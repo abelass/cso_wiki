@@ -6,33 +6,19 @@
 	#SET{id_article,#ENV{id_trad}}
 	})]
 
-<B_art_lie>
-<div class="linked_article">
-<BOUCLE_art_lie(articles_lies){id_article_lie=#GET{id_article}}>
-	<BOUCLE_art_base(ARTICLES){id_article=#ID_ARTICLE}>
-		<BOUCLE_trad_lang(ARTICLES){id_trad}{lang} {id_trad !IN #GET{id_trad}}{doublons}>
-			#SET{id_trad,#GET{id_trad}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_TRAD}}}
-			<a href="#URL_ARTICLE" title="<:back_to:> #TITRE">#TITRE</a>			
-		</BOUCLE_trad_lang>	
-			<BOUCLE_trad_or(ARTICLES){id_trad}{origine_traduction} {id_trad !IN #GET{id_trad}}{doublons}>
-				#SET{id_trad,#GET{id_trad}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_TRAD}}}
-				<a href="#URL_ARTICLE" title="<:back_to:> #TITRE">#TITRE [#LANG]</a>		
-			</BOUCLE_trad_or>
-				<BOUCLE_non_trad(ARTICLES){id_article}>
-					<a href="#URL_ARTICLE" title="<:back_to:> #TITRE">#TITRE [#LANG]</a>		
-				</BOUCLE_non_trad>			
-			<//B_trad_or>
-		<//B_trad_lang>					
-	</BOUCLE_art_base>
-</BOUCLE_art_lie>
-</div>
-</B_art_lie>
+
 
 
 [(#ENV{composition}|=={ressource}|oui)
 [(#AUTORISER{modifier,article,#ID_ARTICLE}|oui|ou{#ENV{cookie_art}|oui})
-	[(#ENV{edition}|non)<a class="ajax modify open" href="[(#SELF|parametre_url{edition,mod})]" title="<:modify_contribution:>" rel="nofollow"><:modify_contribution:></a>]
-	[(#ENV{edition}|oui)<a class="ajax modify close"  href="[(#SELF|parametre_url{edition,''})]" title="<:modify_contribution_close:>"  rel="nofollow"><:modify_contribution_close:></a>]
+	[(#ENV{edition}|non)
+	<h2>
+	    <a class="ajax modify open" href="[(#SELF|parametre_url{edition,mod})]" title="<:modify_contribution:>" rel="nofollow"><:modify_contribution:></a>
+	</h2>]
+	[(#ENV{edition}|oui)
+	<h2>
+	    <a class="ajax modify close"  href="[(#SELF|parametre_url{edition,''})]" title="<:modify_contribution_close:>"  rel="nofollow"><:modify_contribution_close:></a>
+	</h2>]
 ]
 ]
 
@@ -51,7 +37,7 @@
 	<div class="liste docs">
 		<h3><:docs_rel:></h3>
 		<ul class="liste-items">		
-	<BOUCLE_docs(DOCUMENTS){id_article}{related_info=on}{extension !IN png,jpg,gif,tiff}>
+	<BOUCLE_docs(DOCUMENTS){id_article}{related_info=on}{extension !IN png,jpg,gif,tiff}{0,0}>
 		[
 		<li  class="item hentry">
 			<a href="(#URL_DOCUMENT)" type="#MIME_TYPE" class="spip_doc[ (#EXTENSION|attribut_html)]"><strong class="#EDIT{titre} titre">[(#TITRE|sinon{[(#FICHIER|basename|couper{80})]})]</strong>
@@ -73,3 +59,6 @@
     </div>
     
 ]
+
+<INCLURE{fond=inclure/recent_comments,id_article,ajax}/>
+

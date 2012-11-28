@@ -1,0 +1,31 @@
+  <B_forum>
+  <div class="liste mots">
+      <h2 class="h2"><:recent_comments:></h2>
+      <ul class="liste-items">
+      <BOUCLE_forum(FORUMS) {id_article} {!par date}{pagination 5}>
+          <li class="comment-item comment-fil[ (#COMPTEUR_BOUCLE|alterner{'odd','even'})][ (#COMPTEUR_BOUCLE|=={1}|oui)first][ (#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|oui)last][ (#EXPOSE)]">
+        <dl class="comment hreview">
+            [<dt class="title"><:par_auteur:> <span class="#EDIT{qui}">(#NOM|couper{80})</span></dt>]
+            <dd class="comment-meta">
+                <strong class="#EDIT{titre} comment-titre">[(#TITRE)]</strong>
+                <small><abbr class="dtreviewed"[ title="(#DATE|date_iso)"]>[(#DATE|affdate_jourcourt)][, (#DATE|heures)][:(#DATE|minutes)]</abbr></small>
+            </dd>
+            <dd class="#EDIT{texte} comment-content description">
+                [(#TEXTE|lignes_longues)]
+                [<div class="comment-notes">(#NOTES|safehtml|lignes_longues)</div>]
+                [<p class="#EDIT{hyperlien} hyperlien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></p>]
+                <B_doc><div class="comment-doc"><BOUCLE_doc(DOCUMENTS){id_forum}>
+                [(#EXTENSION|match{'^(gif|jpg|png)$'}|?{
+                    [(#MODELE{emb}|image_reduire{500,*})]
+                ,
+                    #LOGO_DOCUMENT{#URL_DOCUMENT}
+                })]
+                </BOUCLE_doc></div></B_doc>
+            </dd>
+        </dl>
+        </li>
+      </BOUCLE_forum>
+      </ul>
+      [<p class="pagination">(#PAGINATION{page,label=<:page:>})</p>]
+  </div>
+  </B_forum>
