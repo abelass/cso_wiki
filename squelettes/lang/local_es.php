@@ -59,7 +59,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	//T
     'titre'=>'Título',   	
 	'tool'=>'Herramienta',
-	'type_liaison'=>'Typo'
+	'type_liaison'=>'Typo',
+	
+	//U
+    'uploaded_by'=>'Uploaded by',  
 );
 
 ?>

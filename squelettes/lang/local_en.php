@@ -60,7 +60,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	//T
 	'titre'=>'Title',	
 	'tool'=>'Tool',
-	'type_liaison'=>'Type'
+	'type_liaison'=>'Type',
+	
+	//U
+	'uploaded_by'=>'Uploaded by',  
 );
 
 ?>

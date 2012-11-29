@@ -6,16 +6,19 @@
 		#SET{ip,#EVAL{$GLOBALS['ip']}}
 		[(#ENV{edition}|=={new}|non)
 			[<p class="#EDIT{surtitre} surtitre">(#SURTITRE)</p>]
-			<h1 class="h1 [(#EDIT{titre})]">[(#TITRE)] </h1>[<div>(#ID_RUBRIQUE|in_array{#GET{rubriques_ressources_wiki}}|oui)#FORMULAIRE_NOTATION</div>]
+			<h1 class="h1 [(#EDIT{titre})]">[(#TITRE)] </h1>
+			[<div>(#ID_RUBRIQUE|in_array{#GET{rubriques_ressources_wiki}}|oui)#FORMULAIRE_NOTATION</div>]
 			[<p class="#EDIT{soustitre} soustitre">(#SOUSTITRE)</p>]
 	
-			<p class="info-publi">
+			<div class="info-publi">
 			    [(#INCLURE{fond=inclure/outils,env,titre,introduction=#INTRODUCTION,url=#URL_ARTICLE})]
-			    <abbr class="published" title="[(#DATE|date_iso)]">[(#DATE|nom_jour) ][(#DATE|affdate)]</abbr>[<span class="sep">, </span><span class="auteurs"><:par_auteur:> (#LESAUTEURS|supprimer_tags|sinon{#NOM_AUTEUR})</span>]
-			    
-			    </p>
+			    <abbr class="published" title="[(#DATE|date_iso)]">[(#DATE|nom_jour) ][(#DATE|affdate)]</abbr>
+			    [<span class="sep">, </span>
+			    <div class="auteurs"><:uploaded_by:> (#LESAUTEURS|supprimer_tags|sinon{#NOM_AUTEUR})</div>]
+			    <INCLURE{fond=inclure/signaler_abus,env,ajax,objet=article,id_objet=#ID_ARTICLE,retour=#SELF,avis=<:abus:signaler_abus_avis:>,id_auteur=#SESSION{id_auteur},ip=#GET{ip}}/>
+			    </div>
 			
-			<INCLURE{fond=inclure/signaler_abus,env,ajax,objet=article,id_objet=#ID_ARTICLE,retour=#SELF,avis=<:abus:signaler_abus_avis:>,id_auteur=#SESSION{id_auteur},ip=#GET{ip}}/>
+			
 			
 			]
 		[(#ENV{edition}|=={new}|oui)<h1 class="h1"><:new_contribution:></h1>]
@@ -47,9 +50,11 @@
 [(#REM) Forum de l'article
 NB : pour desactiver les forums de l'article, supprimez simplement la ligne ci-dessous ]
 [(#ID_RUBRIQUE|in_array{#GET{rubriques_ressources_wiki}}|oui|et{#ENV{edition}|non})
-[<h2><:forum:form_pet_message_commentaire:></h2>
-			(#FORMULAIRE_FORUM{article,#ID_ARTICLE,'','','','',#SELF})]
-	]
+<div class="form_forum">
+    [<h2><:forum:form_pet_message_commentaire:></h2>
+			(#FORMULAIRE_FORUM)]
+			
+</div>	]
 
 #SET{rubriques_wiki,(#CONFIG{wiki_cso/rubriques_wiki}|picker_selected{rubrique})}
 
