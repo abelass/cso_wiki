@@ -1,5 +1,5 @@
-<BOUCLE_art(ARTICLES){id_article=#ID_TRAD}>  
-	[(#LOGO_ARTICLE
+<BOUCLE_art(ARTICLES){id_article=#ID_TRAD}{origine_traduction}>  
+	[(#LOGO_ARTICLE_NORMAL
 	|image_reduire{#ENV{width,200},#ENV{height,200}}
 	|inserer_attribut{alt,#ENV{alt,#TITRE}})]
 </BOUCLE_art>
