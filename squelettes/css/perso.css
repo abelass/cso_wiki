@@ -512,6 +512,8 @@ div.rating-cancel a, div.star-rating a {
 
 /*Forms*/
 
+form h3 {border:none; text-transform:none; font-size:1.1em}
+
 #nav div.formulaire_recherche{
     background: none repeat scroll 0 0 transparent;
     margin: 0;
@@ -539,21 +541,32 @@ div.rating-cancel a, div.star-rating a {
 
 .formulaire_recherche input.text {
     background: url("img/search.png") no-repeat scroll right center #FFFFFF;
-
 }
 
-.display {display:block;width:100%;position:relative; margin:0.2em auto}
-.display div{display:block;width:45%;float:left;margin-right:1em}
-.orderby, .select{cursor:pointer;}
-.orderby span {height:3em; overflow:auto;}
-.orderby span, .orderby span a{display:block;}
+#formulaire_changement_lang{margin-top:1.5em}
 
-/*.oderby:hover span {
-	display:block;
-	position:absolute; 
-	padding:5px; 
-	background-color:#E5E5E5}*/
-	
+.page_edition_publique form {width:45%;}
+
+.page_edition_publique .editer_liens_sites, .page_edition_publique .editer_texte{position:absolute;left:50%}
+
+.editer_liens_sites{top :3em;}
+
+.page_edition_publique .editer_texte{
+	top:16em; 
+	width:50%
+	}
+
+form .icons{
+	float: left;
+    margin: 0.1em 0.5em 0 0;
+    text-align: center;
+    width: 70px;
+    }
+    
+    
+    
+
+
 
 /*toolbox*/
 
