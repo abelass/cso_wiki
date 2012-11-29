@@ -1,14 +1,22 @@
   <B_forum>
-  <div class="liste mots">
+  <div class="liste comments">
       <h2 class="h2"><:recent_comments:></h2>
       <ul class="liste-items">
       <BOUCLE_forum(FORUMS) {id_article} {!par date}{pagination 5}>
           <li class="comment-item comment-fil[ (#COMPTEUR_BOUCLE|alterner{'odd','even'})][ (#COMPTEUR_BOUCLE|=={1}|oui)first][ (#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|oui)last][ (#EXPOSE)]">
         <dl class="comment hreview">
-            [<dt class="title"><:par_auteur:> <span class="#EDIT{qui}">(#NOM|couper{80})</span></dt>]
+            <dt class="title">
+                <div class="author">
+                    [<:par_auteur:> <span class="#EDIT{qui}">(#NOM|couper{80})</span>
+                </div>]
+                <div class="date">
+                    <abbr class="dtreviewed"[ title="(#DATE|date_iso)"]>[(#DATE|affdate{d.y})]</abbr>
+                </div>
+                </dt>
+            
             <dd class="comment-meta">
                 <strong class="#EDIT{titre} comment-titre">[(#TITRE)]</strong>
-                <small><abbr class="dtreviewed"[ title="(#DATE|date_iso)"]>[(#DATE|affdate_jourcourt)][, (#DATE|heures)][:(#DATE|minutes)]</abbr></small>
+                
             </dd>
             <dd class="#EDIT{texte} comment-content description">
                 [(#TEXTE|lignes_longues)]

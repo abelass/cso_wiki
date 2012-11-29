@@ -77,7 +77,7 @@ body{
 	}
 	
 .article_ressource #contenu{
-	width: 61.8%
+	width: 56.8%
 	}
 
 .rubrique_home #navigation{width:65%}
@@ -88,7 +88,7 @@ body{
 	
 .article_ressource #navigation{
   	padding-right: 7%;
-    width: 23%;
+    width: 27%;
 	
 	
 	float:left}
@@ -199,6 +199,11 @@ body{
 
 em {font-style: normal;text-transform:uppercase}
 
+abbr, acronym {
+    border-bottom: none;
+
+}
+
 /*contenu*/
 
 .chapo,.texte{position:relative}
@@ -219,7 +224,7 @@ em {font-style: normal;text-transform:uppercase}
 	}
 	
 .article_ressource  .contenu-principal{
-	width:90%;
+	width:85%;
 	background-color: #FFFFFF;
 	color: #7b7979;
 	padding-top: 0;
@@ -236,7 +241,7 @@ em {font-style: normal;text-transform:uppercase}
 	position:relative;
 	}
 	
-.form_forum	{padding-right:7%}
+.form_forum	{padding-right:12%}
 
 .published{font-weight:bold}
 
@@ -309,6 +314,18 @@ tr.even td{background-color:#f6f6f6}
 tbody td.title {text-align:left}
 
 tbody td.ranking{padding-left:3em}
+
+/*Navigation*/
+
+#navigation dl{padding:0}
+
+.comment .date, .comment .author{float:left}
+
+.comment .author{width:80%}
+
+.comment .date{width:20%;font-weight:bold}
+
+.comment-content{font-style: italic; font-size: 90%}
 
 
 
