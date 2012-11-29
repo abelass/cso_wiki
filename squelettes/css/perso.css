@@ -7,11 +7,15 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     text-transform: uppercase;
     color:#5e5b5b;
 	padding-bottom:0.8em; 
-	border-bottom:#cccbcb 1px solid;
+	border-bottom:#cccbcb 2px solid;
 	clear:both;
 }
 
-h1, .h1{padding-left: 0.6em;padding-bottom:0.4em; }
+h1, .h1{
+	padding-left: 0.6em;
+	padding-bottom:0.4em; 
+	border-bottom:#cccbcb 1px solid;
+	}
 
 .rubrique_home h1, .rubrique_home h1,.rubrique_wiki h1, .rubrique_wiki h1,.article_principe h1, .article_principe  h1{
 	padding-left: 0;
