@@ -2,14 +2,25 @@
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     font-family: "Arial";
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-weight:bold;
     text-transform: uppercase;
     color:#5e5b5b;
-	padding-bottom:0.9em; 
-	border-bottom:#cccbcb 2px solid;
+	padding-bottom:0.8em; 
+	border-bottom:#cccbcb 1px solid;
 	clear:both;
 }
+
+h1, .h1{padding-left: 0.6em;padding-bottom:0.4em; }
+
+.rubrique_home h1, .rubrique_home h1,.rubrique_wiki h1, .rubrique_wiki h1,.article_principe h1, .article_principe  h1{
+	padding-left: 0;
+	padding-bottom:0.8em; 
+	border-bottom:#cccbcb 2px solid;}
+
+.h2, h2 {border-bottom:#cccbcb 2px solid;}
+
+
 
 .rubrique_wiki h1,.rubrique_wiki .h1, .article_principe h1, .article_principe .h1 {
     color: #FFFFFF;
@@ -206,17 +217,13 @@ abbr, acronym {
 
 /*contenu*/
 
-.chapo,.texte{position:relative}
 
 
-.texte {
-    line-height: normal;
-}
-
+.contenu-principal{ margin-top: 2.5em;width: 95%;}
 
 .rubrique_wiki .contenu-principal, .page_article .contenu-principal{
 	padding-top:1em;
-	margin: 0 0 2em;
+	margin: 0 2em 0.8em 0;
 	background-color: #a7a9ac;
 	color: #FFFFFF;
 	width:37%;
@@ -228,8 +235,14 @@ abbr, acronym {
 	background-color: #FFFFFF;
 	color: #7b7979;
 	padding-top: 0;
+	margin-top: 1.4em;
 	padding-right:10%
 	}	
+	
+.chapo,.texte{position:relative}
+
+.texte {line-height: normal;}
+	
 
 .cartouche, .chapo, .texte, dl, .hyperlien{padding:0 0.65em}
 
@@ -248,13 +261,15 @@ abbr, acronym {
 .page_article .soustitre{font-weight:bold;text-transform:uppercase;font-size:1.2em}
 
 
-.right{margin-top:4em}
-
 .page_article .right{margin-top:2.5em}
 
 .left,.right{float:left}
 
 .right{width:58%;}
+
+.rubrique_wiki .right{margin-top:4em}
+
+.left{width:36%;padding-left:1%}
 
 .tiles{
 	background:#FFFFFF; 
@@ -337,16 +352,19 @@ tbody td.ranking{padding-left:3em}
 .rubrique_home .left{
 	width:46%;
 	background: none repeat scroll 0 0 #A7A9AC;
+	margin-top:0;
+	padding:0;
 	}
 .rubrique_home .right{
 	width :46%;
-	padding:1.4em 0 0 8%
+	padding:4em 0 0 8%
 }
 
+.rubrique_home .contenu-principal{width:100%; padding-top:4em;margin-top:0}
 .rubrique_home .tiles{padding-left:0}
 .rubrique_home .contenu-principal p {margin-right:2em;}
 
-.arrow{height: 10px;width:14px;position:absolute;right:0;}
+.arrow{height: 10px;width:14px;position:absolute;right:0.65em;}
 
 .up{
 	background:url('img/arrow-up.png') top right no-repeat;
@@ -366,9 +384,9 @@ tbody td.ranking{padding-left:3em}
 	font-style: italic; 
 	font-weight:normal;
 	text-transform: capitalize;
-	font-size:93%}
+	font-size:83%}
 
-.item .title a{font-weight:bold; font-size:110%; line-height:normal}
+.item .title a{font-weight:bold; line-height:normal}
 
 
 

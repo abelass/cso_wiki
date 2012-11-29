@@ -17,9 +17,7 @@
 			    <div class="auteurs"><:uploaded_by:> (#LESAUTEURS|supprimer_tags|sinon{#NOM_AUTEUR})</div>]
 			    <INCLURE{fond=inclure/signaler_abus,env,ajax,objet=article,id_objet=#ID_ARTICLE,retour=#SELF,avis=<:abus:signaler_abus_avis:>,id_auteur=#SESSION{id_auteur},ip=#GET{ip}}/>
 			    </div>
-			
-			
-			
+
 			]
 		[(#ENV{edition}|=={new}|oui)<h1 class="h1"><:new_contribution:></h1>]
 		
