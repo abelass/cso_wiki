@@ -1,5 +1,4 @@
 <div class="tools">
-    <INCLURE{fond=inclure/menu_langues,env,id_article,id_rubrique}/>
     <div class="social">
         <a href=" title"><img src="#CHEMIN{css/img/connect-facebook.png}" alt="Facebook"/></a>
         <a href=" title"><img src="#CHEMIN{css/img/connect-twitter.png}" alt="Twitter"/></a>        
@@ -7,6 +6,7 @@
         <a title="<:recommander:recommander:>"class="mediabox" href="[(#URL_PAGE{recommander}|parametre_url{id_article,#ID_ARTICLE}|parametre_url{id_rubrique,#ID_RUBRIQUE})]">
             <img src="#CHEMIN{css/img/connect-subscribe.png}" alt="Linkedin"/>
         </a>
-     
+        
     </div>
+     <INCLURE{fond=inclure/menu_langues,env,id_article,id_rubrique}/>
 </div>

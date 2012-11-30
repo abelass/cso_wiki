@@ -119,12 +119,13 @@ body{
 
 /*header*/
 
-.tools{float:right;width:230px}
+.tools{float:right;width:100%;margin-bottom:0.2em}
 
-.tools p.traductions {line-height:0.7em}
+.tools p.traductions {line-height:0.7em;font-size:90%}
 
-.social,.traductions{float:left}
-.social{margin-left:1.2em;}
+.social,.traductions{float:right}
+
+.social{margin-left:1.2em;width:14%}
 
 
 
