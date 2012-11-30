@@ -65,7 +65,7 @@ NB : pour desactiver les forums de l'article, supprimez simplement la ligne ci-d
 [(#REM)Le formulaire d'&eacute;dition]
 
 
-<BOUCLE_rubrique_wiki(RUBRIQUES){id_parent=#ENV{id_rubrique,#ID_RUBRIQUE}}{id_rubrique IN #GET{rubriques_wiki}}{si #ENV{edition}|=={new}}{tout}>1
+<BOUCLE_rubrique_wiki(RUBRIQUES){id_parent=#ENV{id_rubrique,#ID_RUBRIQUE}}{id_rubrique IN #GET{rubriques_wiki}}{si #ENV{edition}|=={new}}{tout}>
 	#SET{id_rubrique,#ID_RUBRIQUE}
 </BOUCLE_rubrique_wiki>
 
