@@ -72,8 +72,9 @@ body{
 
 
 #entete {
-    border: none
-
+    border: none;
+	padding: 0 0 2.6em;
+	margin:0;
 }
 
 .article_ressource #conteneur{padding-top:3em}
@@ -119,21 +120,31 @@ body{
 
 /*header*/
 
-.tools{float:right;width:100%;margin-bottom:0.2em}
+.tools{
+	float:right;
+	width:100%;
+	margin:0;
+	padding:0;
+	overflow:hidden}
 
-.tools p.traductions {line-height:0.7em;font-size:90%}
+.tools p.traductions {
+    font-size: 90%;
+    margin: 0;
+    padding: 0.9em 0 0;
+}
 
 .social,.traductions{float:right}
 
-.social{margin-left:1.2em;width:14%}
+.social{margin:0 0 0 1.2em;width:14%;padding:0}
 
 
 
 #nav{
 	width:100%; 
 	line-height: 2.7em;
-	background:#B8FFB8;
 	position:relative;
+	padding:0;
+	margin:0;
 	}
 
 #nav div{
@@ -166,7 +177,7 @@ body{
 #nav .menu-liste .menu-entree {margin: 0 0.5em 0 0;}
 
 #nav .add_ressource{
-	margin:-1px 0 0 1%;
+	margin:0 0 0 1%;
 	width: 24%;
 	background-color: #a7a9ac;
 	font-weight:bold;
