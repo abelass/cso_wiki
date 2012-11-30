@@ -1,17 +1,14 @@
 [(#REM) Définir le sens du tri]
 
 [(#REM) par défaut type de liaison pour le premier trie]
-
-#SET{trier,type_liaison}
+    #SET{trier,type_liaison}
 
 [(#REM) pour le trie par type]
+	#SET{senstri,#ENV{senstri,1}}
 	
-#SET{senstri,#ENV{senstri,1}}
-	
-
 [(#REM)On fait un tableau des toutes les traductions de l'article de base]
-
 #SET{id_articles,#ARRAY}
+
 <BOUCLE_arts(ARTICLES){id_trad}{id_trad!=0}>
     #SET{id_articles,#GET{id_articles}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_ARTICLE}}}
 </BOUCLE_arts>
@@ -36,12 +33,16 @@
 
     #SET{rubriques_wiki,(#CONFIG{wiki_cso/rubriques_ressources_wiki}|picker_selected{rubrique})}
 
+[(#REM)On remet le compteur à 0]
     #SET{articles,#GET{articles_tous}}
-
-    #SET{dates,#ARRAY}
-
-[(#REM)On remet le compteur &agrave; 0]
     #SET{articles_tous,#ARRAY}
+    
+<BOUCLE_recherche_trad(ARTICLES){id_rubrique IN #GET{rubriques_wiki}}{id_article IN #GET{articles}}>
+    #SET{articles_tous,#GET{articles_tous}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_ARTICLE}}}
+        <BOUCLE_trads(ARTICLES){traduction}>
+            #SET{articles_tous,#GET{articles_tous}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_ARTICLE}}}
+        </BOUCLE_trads>
+</BOUCLE_recherche_trad>    
 
 
 [(#REM) D&eacute;finir le sens du tri par défaut pour le boucles articles]
@@ -51,17 +52,7 @@
     #SET{senstri,#ENV{senstri,0}}
 
 
-<BOUCLE_recherche_trad(ARTICLES){id_rubrique IN #GET{rubriques_wiki}} {id_article IN #GET{articles}} {notation} {par #GET{trier}} {inverse #GET{senstri}}{si #ENV{trier_par}|!={type_liaison}|oui}>
 
-    #SET{articles_tous,#GET{articles_tous}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_ARTICLE}}}
-
-
-		<BOUCLE_trads(ARTICLES){traduction} {notation}  {par #GET{trier}} {inverse #GET{senstri}}>
-			#SET{articles_tous,#GET{articles_tous}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_ARTICLE}}}
-
-		</BOUCLE_trads>
-
-</BOUCLE_recherche_trad>
 
 [(#ENV{trier_par}|=={type_liaison}|oui)
     #SET{articles_tous,#GET{articles}}
@@ -69,12 +60,12 @@
 
 [(#REM) si on trie par langue on réinitalise le tableau]
 
-[(#ENV{trier_par}|=={lang}|oui)
+[(#ENV{trier_par}|!={type_liaison}|oui)
     #SET{articles,#GET{articles_tous}}
     #SET{articles_tous,#ARRAY}
 ]
 
-<BOUCLE_lang(ARTICLES) {id_rubrique IN #GET{rubriques_wiki}} {id_article IN #GET{articles}}{si #ENV{trier_par}|=={lang}|oui}{par lang} {inverse #GET{senstri}}>
+<BOUCLE_lang(ARTICLES) {id_rubrique IN #GET{rubriques_wiki}} {id_article IN #GET{articles}} {id_article IN #GET{articles}} {notation} {par #GET{trier}} {inverse #GET{senstri}}{si #ENV{trier_par}|!={type_liaison}|oui}>
        #SET{articles_tous,#GET{articles_tous}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_ARTICLE}}}
 </BOUCLE_lang>
 
