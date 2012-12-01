@@ -65,7 +65,7 @@
     #SET{articles_tous,#ARRAY}
 ]
 
-<BOUCLE_lang(ARTICLES) {id_rubrique IN #GET{rubriques_wiki}} {id_article IN #GET{articles}} {id_article IN #GET{articles}} {notation} {par #GET{trier}} {inverse #GET{senstri}}{si #ENV{trier_par}|!={type_liaison}|oui}>
+<BOUCLE_lang(ARTICLES) {id_rubrique IN #GET{rubriques_wiki}} {id_article IN #GET{articles}} {notation} {par #GET{trier}} {inverse #GET{senstri}}{si #ENV{trier_par}|!={type_liaison}|oui}>
        #SET{articles_tous,#GET{articles_tous}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_ARTICLE}}}
 </BOUCLE_lang>
 
