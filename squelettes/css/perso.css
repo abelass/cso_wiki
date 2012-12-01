@@ -570,15 +570,11 @@ form h3 {border:none; text-transform:none; font-size:1.1em}
 
 form .icons{
 	float: left;
-    margin: 0.1em 0.5em 0 0;
+    margin: 0.1em 0.3em 0 0;
     text-align: center;
-    width: 70px;
+    width: 125px;
     }
     
-    
-    
-
-
 
 /*toolbox*/
 
@@ -641,4 +637,9 @@ form .icons{
 
 a {color:#838181;}
 a.spip_out, a.spip_glossaire {color:#ee1c7b;}
+
+a:hover img, a:active img {opacity:0.4;behavior: url(/PIE.htc);}
 a:hover, a:active{color:#ee1c7b;}
+.social a img, #contenu div.socialtags img, #outils .recommander a img{background:#a7a9ac}
+.social a:hover img, #contenu div.socialtags a:hover img,#outils  .recommander a:hover img{background:#ee357c;opacity:1;behavior: url(/PIE.htc); 	}
+
