@@ -1,0 +1,5 @@
+<composition>
+        <nom>La rubrique Enabling</nom>
+        <description>Affiche la rubrique Enabling</description>
+        <branche type="article" composition="enabling" />
+</composition>

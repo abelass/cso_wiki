@@ -12,7 +12,9 @@
 	    <B_faq>
             <dl class="faq">
             <BOUCLE_faq(ARTICLES){id_rubrique}{lang}{par num titre}>
-            [<dt><span class="open">-</span><span class="closed">+</span> #TITRE</dt>  
+            [<dt class="row_[(#COMPTEUR_BOUCLE|modulo{3})]">
+                <span class="open">-</span>
+                <span class="closed">+</span> #TITRE</dt>  
                 <dd class="#EDIT{#VALEUR} #VALEUR">(#TEXTE)</dd>]
             </BOUCLE_faq>
             </dl>

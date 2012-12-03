@@ -230,23 +230,27 @@ abbr, acronym {
     border-bottom: none;
 
 }
-
 /*contenu*/
-
-
 
 .contenu-principal{ margin-top: 2.5em;width: 95%;}
 
 .rubrique_wiki .contenu-principal, .page_article .contenu-principal{
 	padding-top:1em;
-	margin: 0 2em 0.8em 0;
+	margin: 0 0.4em 0 0;
 	background-color: #a7a9ac;
 	color: #FFFFFF;
 	width:37%;
 	float:left
 	}
 	
-.article_ressource  .contenu-principal{
+.article_enabling .contenu-principal{
+	width:100%;
+	background-color: #FFFFFF;
+	color:#7B7979;
+	  margin-top: 2.5em;
+    width: 95%;
+}
+.article_ressource .contenu-principal{
 	width:85%;
 	background-color: #FFFFFF;
 	color: #7b7979;
@@ -255,7 +259,25 @@ abbr, acronym {
 	padding-right:10%
 	}	
 	
+.article_enabling .spip_logos{
+	float:right;
+	margin: 0 0 1em 1em;
+	}
+
 .chapo,.texte{position:relative}
+
+.chapo {
+    height: 21em;
+    overflow: auto;
+    width:92%;
+    font-size:1em;
+}
+
+.rubrique_wiki .chapo{
+	height:31em;
+	font-size:0.9em;
+	width:92%;
+	}
 
 .texte {line-height: normal;}
 	
@@ -281,11 +303,11 @@ abbr, acronym {
 
 .left,.right{float:left}
 
-.right{width:58%;}
+.right{width:58.5%;}
 
 .rubrique_wiki .right{margin-top:4em}
 
-.left{width:36%;padding-left:1%}
+.left{width:35.5%;padding-left:1%}
 
 .tiles{
 	background:#FFFFFF; 
@@ -295,13 +317,18 @@ abbr, acronym {
 
 .tiles img {margin: 0.8em 0.4em;}
 
-.tiles{padding-left:6%}
+.tiles{padding-left:5%}
 
 .page_article .tiles{width:70%; padding-top:0}
 
 .page_article .tiles img {margin: 0 0.2em 0.2em 0.2em;}
 
-.faq{background-color: #FFFFFF; color: #7b7979;margin:0}
+.faq{
+	background-color: #FFFFFF; 
+	color: #7b7979;margin:0;
+	}
+
+.article_principe .large{width:200%}
 
 /*tables*/
 
@@ -320,9 +347,11 @@ thead td a{
 	position:relative;
 	margin-bottom:0.5em}
 
-td a:hover,thead td a:active{color:#ee1c7b;}
+td a:hover,thead td a:active{color:#FFFFFF;}
 
-thead td a.on{background-color:#5e5f61;}
+thead td a.on{background-color:#5e5f61;color:#FFFFFF}
+
+.article_principe td .type, .article_principe td.language{text-transform:uppercase;font-style:normal; font-size:100%}
 
 thead td a img{
 	margin-top:0.5em;
@@ -378,7 +407,7 @@ tbody td.ranking{padding-left:3em}
 
 .rubrique_home .contenu-principal{width:100%; padding-top:4em;margin-top:0}
 .rubrique_home .tiles{padding-left:0}
-.rubrique_home .contenu-principal p {margin-right:2em;}
+
 
 .arrow{height: 10px;width:14px;position:absolute;right:0.65em;}
 
@@ -553,6 +582,8 @@ form h3 {border:none; text-transform:none; font-size:1.1em}
 
 .formulaire_recherche input.text {
     background: url("img/search.png") no-repeat scroll right center #FFFFFF;
+   	padding: 0.4em 25px 0.3em 0.1em;
+   	text-transform:uppercase;
 }
 
 #formulaire_changement_lang{margin-top:1.5em}
@@ -642,4 +673,20 @@ a:hover img, a:active img {opacity:0.4;behavior: url(/PIE.htc);}
 a:hover, a:active{color:#ee1c7b;}
 .social a img, #contenu div.socialtags img, #outils .recommander a img{background:#a7a9ac}
 .social a:hover img, #contenu div.socialtags a:hover img,#outils  .recommander a:hover img{background:#ee357c;opacity:1;behavior: url(/PIE.htc); 	}
+
+/*scrollbar styling*/
+
+
+.jspVerticalBar .jspArrowUp{background: url('img/arrow-up.png') transparent no-repeat;z-index: 1000;}
+
+
+.rubrique_wiki .jspVerticalBar .jspArrowUp{background: url('img/arrow-up_white.png') transparent no-repeat;z-index: 1000;}
+
+.rubrique_wiki .jspVerticalBar .jspArrowDown{background: url('img/arrow-down_white.png') transparent no-repeat;z-index: 1000;}
+
+.jspVerticalBar .jspArrowDown{background: url('img/arrow-down.png') transparent no-repeat}
+.jspVerticalBar, .jspTrack, .jspDrag {
+    background:transparent;
+}
+
 

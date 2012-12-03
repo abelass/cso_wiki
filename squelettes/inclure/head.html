@@ -43,7 +43,20 @@
 #INSERT_HEAD
 
 <script type="text/javascript">
+
+function clearDefault(el) {
+  if (el.defaultValue==el.value) el.value = ""
+}
+
 $(document).ready(function(){
   $('.faq a').attr('target', '_blank');
+  
+  $(function(){
+    $('.chapo').jScrollPane(
+       {showArrows:true}
+    );
+    });
 });
+
+
 </script>
