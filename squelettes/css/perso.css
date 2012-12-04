@@ -479,7 +479,25 @@ tbody td.ranking{padding-left:3em}
 
 .id_254 .soustitre, .page_article .id_254 {background-color:#8B5E3C}
 
-.id_255 .soustitre, .page_article .id_255 {background-color:#F7951D}	
+.id_255 .soustitre, .page_article .id_255 {background-color:#F7951D}
+
+	
+
+.rubrique_wiki .id_1 .introduction, .rubrique_wiki .id_1 .meta-publi a{color:#FF0000}
+
+.rubrique_wiki .id_248 .introduction, .rubrique_wiki .id_248 .meta-publi a{color:#91278D}
+
+.rubrique_wiki .id_250 .introduction, .rubrique_wiki .id_250 .meta-publi a{color:#2F3293}
+
+.rubrique_wiki .id_251 .introduction, .rubrique_wiki .id_251 .meta-publi a{color:#00A851}
+
+.rubrique_wiki .id_252 .introduction, .rubrique_wiki .id_252 .meta-publi a{color:#FFDD1A}
+
+.rubrique_wiki .id_253 .introduction, .rubrique_wiki .id_253 .meta-publi a{color:#00A8E6}
+
+.rubrique_wiki .id_254 .introduction, .rubrique_wiki .id_254 .meta-publi a{color:#8B5E3C}
+
+.rubrique_wiki .id_255 .introduction, .rubrique_wiki .id_255 .meta-publi a{color:#F7951D}	
 	
 .item .introduction {float:left; width: 25%;}
 
@@ -528,10 +546,9 @@ tbody td.ranking{padding-left:3em}
 	
 .item .meta-publi {clear:both;}	
 
-.item .meta-publi a{
-	background:url('img/read-more-arrow.png') center right no-repeat;
-	padding-right:1em;
-	}
+.meta-publi .arrow{position:relative; margin-left:1.5em; }
+
+
 /*Rating*/	
 
 div.star-rating, div.star-rating a {
