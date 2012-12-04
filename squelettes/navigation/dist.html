@@ -18,7 +18,9 @@
 	[(#ENV{edition}|oui)
 	<h2>
 	    <a class="ajax modify close"  href="[(#SELF|parametre_url{edition,''})]" title="<:modify_contribution_close:>"  rel="nofollow"><:modify_contribution_close:></a>
-	</h2>]
+	</h2>
+	<INCLURE{fond=prive/objets/editer/colonne_document,env,objet=article,id_objet=#ID_ARTICLE}/>
+	]
 ]
 ]
 

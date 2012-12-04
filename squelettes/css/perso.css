@@ -103,7 +103,7 @@ body{
 	}
 	
 .article_ressource #navigation{
-  	padding-right: 7%;
+  	padding:0 7% 0 3%;
     width: 27%;
 	
 	
@@ -245,9 +245,7 @@ abbr, acronym {
 	
 .article_enabling .contenu-principal{
 	width:100%;
-	background-color: #FFFFFF;
-	color:#7B7979;
-	  margin-top: 2.5em;
+	  margin-top: 3.5em;
     width: 95%;
 }
 .article_ressource .contenu-principal{
