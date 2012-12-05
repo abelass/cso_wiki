@@ -565,7 +565,7 @@ div.rating-cancel a, div.star-rating a {
     width: 21px;
 }
 
-
+div.star-rating-hover a{background-position:0 -40px}
 /*Forms*/
 
 form h3 {border:none; text-transform:none; font-size:1.1em}
