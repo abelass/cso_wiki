@@ -10,7 +10,7 @@
 
 
 [(#ENV{composition}|=={ressource}|oui)
-[(#AUTORISER{modifier,article,#ID_ARTICLE}|oui|ou{#ENV{cookie_art}|oui})
+[(#AUTORISER{modifier,article,#ID_ARTICLE}|oui|ou{#ENV{cookie_art}|oui}|ou{#INCLURE{fond=inclure/auteur_article,id_article}|=={#SESSION{id_auteur}}|oui})
 	[(#ENV{edition}|non)
 	<h2>
 	    <a class="ajax modify open" href="[(#SELF|parametre_url{edition,mod})]" title="<:modify_contribution:>" rel="nofollow"><:modify_contribution:></a>

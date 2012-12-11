@@ -75,7 +75,12 @@ NB : pour desactiver les forums de l'article, supprimez simplement la ligne ci-d
 	[(#ENV{edition}|=={new}|?{
 		#SET{id_article,0},
 		[(#SET{id_article,#GET{cookie}})]
-		[(#AUTORISER{modifier,article,#ENV{id_article}})#SET{id_article,#ENV{id_article}}]
+		[(#AUTORISER{modifier,article,#ENV{id_article}}|oui|?{
+		    #SET{id_article,#ENV{id_article}}
+		    ,
+		    [(#INCLURE{fond=inclure/auteur_article,id_article}|=={#SESSION{id_auteur}}|oui)
+		    #SET{id_article,#ENV{id_article}}]
+		    })]
 		})]	
 	<div id="form_wiki">
 	[(#ENV{lier_trad}|oui)
