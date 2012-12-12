@@ -7,10 +7,13 @@
 	})]
 
 
-
+#SET{droit_edition,''}
+[(#AUTORISER{modifier,article,#ID_ARTICLE})#SET{droit_edition,oui}]
+[(#ENV{cookie_art}|=={#ID_ARTICLE}|oui)#SET{droit_edition,oui}]
+[(#INCLURE{fond=inclure/auteur_article,id_article=#ID_ARTICLE}|=={#SESSION{id_auteur}}|oui)#SET{droit_edition,oui}]
 
 [(#ENV{composition}|=={ressource}|oui)
-[(#AUTORISER{modifier,article,#ID_ARTICLE}|oui|ou{#ENV{cookie_art}|oui}|ou{#INCLURE{fond=inclure/auteur_article,id_article}|=={#SESSION{id_auteur}}|oui})
+[(#GET{droit_edition}|oui)
 	[(#ENV{edition}|non)
 	<h2>
 	    <a class="ajax modify open" href="[(#SELF|parametre_url{edition,mod})]" title="<:modify_contribution:>" rel="nofollow"><:modify_contribution:></a>
