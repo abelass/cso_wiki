@@ -10,7 +10,7 @@
 			[<p class="#EDIT{soustitre} soustitre">(#SOUSTITRE)</p>]
 	
 			[(#ID_RUBRIQUE|in_array{#GET{rubriques_ressources_wiki}}|oui)<p class="info-publi"><abbr class="published" title="[(#DATE|date_iso)]">[(#DATE|nom_jour) ][(#DATE|affdate)]</abbr>[<span class="sep">, </span><span class="auteurs"><:par_auteur:> (#LESAUTEURS|supprimer_tags|sinon{#NOM_AUTEUR})</span>]</p>
-			<INCLURE{fond=inclure/signaler_abus,env,ajax,objet=article,id_objet=#ID_ARTICLE,retour=#SELF,avis=<:abus:signaler_abus_avis:>,id_auteur=#SESSION{id_auteur},ip=#GET{ip}}/>]
+			<INCLURE{fond=inclure/signaler_abus,env,ajax,objet=article,id_objet=#ID_ARTICLE,retour=#SELF,avis=<:signaler_abus_avis:>,id_auteur=#SESSION{id_auteur},ip=#GET{ip}}/>]
 			
 			]
 		[(#ENV{edition}|=={new}|oui)<h1 class="h1"><:new_contribution:></h1>]
