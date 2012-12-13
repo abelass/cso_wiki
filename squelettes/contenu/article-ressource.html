@@ -96,7 +96,7 @@ NB : pour desactiver les forums de l'article, supprimez simplement la ligne ci-d
 	[(#GET{id_article}|oui)
 		#FORMULAIRE_TRADUIRE_ARTICLE{#ID_ARTICLE}
 		]
-
+#GET{id_rubrique}
 	#FORMULAIRE_EDITION_PUBLIQUE{article,#GET{id_article},#ENV{id_parent,#GET{id_rubrique}}}
 	</div>
 	]
