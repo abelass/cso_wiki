@@ -55,6 +55,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'sense_trie_ascendant'=>'Ascendant',
     'sense_trie_descendant'=>'Descendant',    	
 	'since'=>'Since',
+	'signaler_abus'=>'Click here to report this content as spam',	
 	'shortcuts'=>'Shortcuts',
 	
 	//T
