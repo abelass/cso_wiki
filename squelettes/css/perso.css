@@ -566,6 +566,8 @@ div.rating-cancel a, div.star-rating a {
 }
 
 div.star-rating-hover a{background-position:0 -40px}
+
+
 /*Forms*/
 
 form h3 {border:none; text-transform:none; font-size:1.1em}
@@ -620,7 +622,6 @@ form .icons{
     text-align: center;
     width: 125px;
     }
-    
 
 /*toolbox*/
 
@@ -708,3 +709,4 @@ a:hover, a:active{color:#ee1c7b;}
 /*abus*/
 
 .bouton_signaler a{font-size:90%;}
+
