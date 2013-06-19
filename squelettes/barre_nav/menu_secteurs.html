@@ -17,13 +17,13 @@
         <span class="add_content"><:add_ressource:></span>
         <ul class="liste-items">
         <BOUCLE_type(DATA){source table,#CONFIG{a2a/types_liaisons}}{cle!=ressource}>
-            <li class="item hentry"><a href="[(#URL_PAGE{edition_publique}|parametre_url{objet,article}|parametre_url{edition,new}|parametre_url{type_lien,#CLE}|parametre_url{link_source,#ID_TRAD}|parametre_url{lang_dest,#ENV{lang_dest,#ENV{lang}}})]#form_wiki" title="[(#VALEUR|_T)]" >[(#VALEUR|_T)]</a></li>
+            <li class="item hentry"><a href="[(#URL_PAGE{edition_publique}|parametre_url{objet,article}|parametre_url{edition,new}|parametre_url{type_lien,#CLE}|parametre_url{link_source,#ID_TRAD}|parametre_url{lang_dest,#ENV{lang_dest,#ENV{lang}}}|parametre_url{redirect,#URL_PAGE{edition_publique}})]#form_wiki" title="[(#VALEUR|_T)]" >[(#VALEUR|_T)]</a></li>
         </BOUCLE_type>
         </ul>
     </div>
     </B_type>
 </BOUCLE_test_wiki>
-       <div class="add_ressource"><a href="[(#URL_PAGE{edition_publique}|parametre_url{lang_dest,#ENV{lang}}|parametre_url{objet,article})]" rel="nofollow" class='add_ressource'><:add_ressource:></a></div>
+       <div class="add_ressource"><a href="[(#URL_PAGE{edition_publique}|parametre_url{lang_dest,#ENV{lang}}|parametre_url{objet,article}|parametre_url{redirect,#URL_PAGE{edition_publique}})]" rel="nofollow" class='add_ressource'><:add_ressource:></a></div>
 <//B_test_wiki>
 
 [(#REM) Formumlaire de recherche]
